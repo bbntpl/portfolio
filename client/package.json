@@ -4,8 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build": "tsc",
-		"start": "ts-node src/index.ts"
+		"build:css": "tailwindcss -i ./src/inrut.css -o ./dist/output.css --minify --watch",
+		"build": "npm run build:css && webpack --env production",
+		"serve": "webpack-dev-server --env development",
+		"serve:error": "webpack serve --env development --client-overlay-errors "
 	},
 	"keywords": [],
 	"author": "",
@@ -15,10 +17,17 @@
 		"@types/webpack": "^5.28.1",
 		"@types/webpack-dev-server": "^4.7.2",
 		"autoprefixer": "^10.4.14",
+		"css-loader": "^6.8.1",
+		"html-webpack-plugin": "^5.5.3",
 		"postcss": "^8.4.27",
+		"postcss-loader": "^7.3.3",
+		"postcss-preset-env": "^9.1.0",
+		"style-loader": "^3.3.3",
 		"tailwindcss": "^3.3.3",
 		"ts-loader": "^9.4.4",
-		"ts-node": "^10.9.1",
-		"typescript": "^5.1.6"
+		"typescript": "^5.1.6",
+		"webpack": "^5.88.2",
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^4.15.1"
 	}
 }

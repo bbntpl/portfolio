@@ -1,6 +1,12 @@
 {
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true
-    }
+        "esModuleInterop": true,
+        "target":  "ES5",
+        "noImplicitAny": true
+    },
+    "include": [
+        "src",
+        "*.ts",
+    ]
 }

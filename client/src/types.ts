@@ -1,12 +1,3 @@
-export interface Education {
-	school: string;
-	degree: string;
-	fieldOfStudy: string;
-	startDate: string;
-	endDate: string;
-	description: string;
-}
-
 export type TypeResponse<T> = {
 	data: T | null;
 	ok: boolean;
@@ -18,20 +9,31 @@ export type State<T> = {
 	data: T | null;
 };
 
+export interface Education {
+	school: string;
+	degree: string;
+	fieldOfStudy: string;
+	startDate: string;
+	endDate: string;
+	description?: string;
+}
+
 interface Topic {
 	name: string;
 }
 
 export interface Project {
+	id: number,
 	title: string;
+	url: string;
 	imageUrl: string;
 	description: string;
-	date: string;
+	createdAt: string;
 	topics: Topic[];
 	updatedAt: string;
 }
 
 export interface Portfolio {
-	educations: Education[];
+	educationalBackgrounds: Education[];
 	projects: Project[];
 }

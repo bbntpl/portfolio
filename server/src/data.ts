@@ -1,13 +1,6 @@
-interface Education {
-	school: string;
-	degree: string;
-	fieldOfStudy: string;
-	startDate: string;
-	endDate: string;
-	description: string;
-}
+import { Education, Profile } from './types';
 
-export const education: Education[] = [
+export const educationalBackgrounds: Education[] = [
 	{
 		school: 'Coastal Carolina Community College',
 		degree: 'Associates in Applied Science',
@@ -17,3 +10,8 @@ export const education: Education[] = [
 		description: ''
 	}
 ]
+
+export const portfolioProfile: Profile = {
+	imageUrl: '',
+
+}
