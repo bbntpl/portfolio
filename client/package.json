@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build:css": "tailwindcss -i ./src/inrut.css -o ./dist/output.css --minify --watch",
+		"build:css": "tailwindcss -i ./src/style.css -o ./dist/output.css --minify --watch",
 		"build": "npm run build:css && webpack --env production",
 		"serve": "webpack-dev-server --env development",
 		"serve:error": "webpack serve --env development --client-overlay-errors "

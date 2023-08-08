@@ -9,6 +9,8 @@ export type State<T> = {
 	data: T | null;
 };
 
+export type Sections = 'About' | 'Education' | 'Projects' | 'Skills';
+
 export interface Education {
 	school: string;
 	degree: string;

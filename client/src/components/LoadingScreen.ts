@@ -1,5 +1,4 @@
-import loadingImage from '../assets/loading-gear.svg';
-import gearImage from '../assets/not-loading-gear.svg';
+import getIcon from './icons';
 
 export default class LoadingScreen {
 	container: HTMLDivElement;
@@ -12,9 +11,9 @@ export default class LoadingScreen {
 		this.text = document.createElement('p');
 		this.text.textContent = 'Data minions are spawning...'
 		this.image = new Image();
-		this.image.src = loadingImage;
+		this.image.src = getIcon({ name: 'Loading' });
 
-		// Setu[] SVG image 
+		// Set SVG image attrs 
 		this.image.setAttribute('width', '110');
 		this.image.setAttribute('height', '110');
 
@@ -35,6 +34,6 @@ export default class LoadingScreen {
 
 	public displayError(errorMessage: string = 'Something went wrong.') {
 		this.text.textContent = `${errorMessage} Try reload.`
-		this.image.src = gearImage;
+		this.image.src = getIcon({ name: 'Error' });
 	}
 }

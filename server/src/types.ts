@@ -17,16 +17,18 @@ interface RandomFact {
 export interface Profile {
 	imageUrl: string;
 	socialMediaLinks: Array<SocialMediaLink> | null;
-	about: string;
+	// In-between elements (paragraphs) are spacing when displaying on client-side
+	about: Array<string>;
 	randomFacts: Array<RandomFact> | null;
 }
 
 export interface Skill {
 	level: 'beginner' | 'intermediate' | 'experienced';
 	name: string;
+	category: 'Front-end' | 'Back-end' | 'Dev Tools' | 'Others';
 }
 
-export type SkillSet = Array<Skill>;
+export type Skillset = Array<Skill>;
 
 export interface Education {
 	school: string;
@@ -54,7 +56,7 @@ export interface Project {
 
 export interface Portfolio {
 	profile: Profile;
-	skillset: SkillSet;
+	skillset: Skillset;
 	educationalBackgrounds: Education[];
 	projects: Project[];
 }

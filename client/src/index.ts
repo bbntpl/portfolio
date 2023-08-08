@@ -3,6 +3,7 @@ import { Portfolio } from './types';
 
 import './style.css';
 import LoadingScreen from './components/LoadingScreen';
+import backgroundImage from './assets/beam.png';
 
 class App {
 	data: Portfolio;
@@ -14,6 +15,7 @@ class App {
 		this.containerEl = document.createElement('div');
 		this.containerEl.className = 'main-container';
 		this.containerEl.textContent = this.data.projects.length + '';
+		this.containerEl.style.backgroundImage = backgroundImage;
 	}
 }
 

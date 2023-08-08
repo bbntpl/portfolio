@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import { ListUserStarredRepos, Portfolio, Project } from './types';
-import { educationalBackgrounds } from './data';
+import { aboutMeInfo, educationalBackgrounds, mySkillset } from './data';
 
 const app = express();
 const PORT = 3001;
@@ -42,7 +42,9 @@ app.get('/api/data', async function (req, res, next) {
 
 		const portfolioData: Portfolio = {
 			projects: fetchedRepos,
-			educationalBackgrounds
+			educationalBackgrounds,
+			skillset: mySkillset,
+			profile: aboutMeInfo
 		}
 
 		// added ok to ensure that client-side received the response properly
