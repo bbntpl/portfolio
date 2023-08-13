@@ -9,6 +9,32 @@ export type State<T> = {
 	data: T | null;
 };
 
+interface SocialMediaLink {
+	platform: string;
+	url: string;
+}
+
+interface RandomFact {
+	label: string;
+	value: string;
+}
+
+export interface Profile {
+	imageUrl: string;
+	socialMediaLinks: Array<SocialMediaLink> | null;
+	// In-between elements (paragraphs) are spacing when displaying on client-side
+	about: Array<string>;
+	randomFacts: Array<RandomFact> | null;
+}
+
+export interface Skill {
+	level: 'beginner' | 'intermediate' | 'experienced';
+	name: string;
+	category: 'Front-end' | 'Back-end' | 'Dev Tools' | 'Others';
+}
+
+export type Skillset = Array<Skill>;
+
 export type Sections = 'About' | 'Education' | 'Projects' | 'Skills';
 
 export interface Education {
@@ -36,6 +62,8 @@ export interface Project {
 }
 
 export interface Portfolio {
+	profile: Profile;
+	skillset: Skillset;
 	educationalBackgrounds: Education[];
 	projects: Project[];
 }

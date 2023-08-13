@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'AvenirBook';
+    src: url('./assets/fonts/Avenir-Book.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AvenirRoman';
+    src: url('./assets/fonts/Avenir-Roman.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#header {
+    font-family: 'AvenirBook', 'AvenirRoman'; 
+}
+
+svg text{
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}

@@ -2,7 +2,8 @@
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "target":  "ES5",
+        "target":  "ES2017",
+        "moduleResolution": "nodenext",
         "noImplicitAny": true
     },
     "include": [

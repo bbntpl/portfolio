@@ -9,8 +9,6 @@ import GithubIcon from '../assets/icons/socials/github.svg';
 import InstagramIcon from '../assets/icons/socials/instagram.svg';
 import LinkedinIcon from '../assets/icons/socials/linkedin.svg';
 import TwitterIcon from '../assets/icons/socials/twitter.svg';
-import RotatingGearIcon from '../assets/icons/loading-gear.svg';
-import FrozenGearIcon from '../assets/icons/not-loading-gear.svg';
 
 export default function getIcon({ name }: { name: string }) {
 	switch (name) {
@@ -19,7 +17,7 @@ export default function getIcon({ name }: { name: string }) {
 		case 'Education':
 			return EducationIcon;
 		case 'Error':
-			return FrozenGearIcon;
+			return PersonalLogo;
 		case 'Facebook':
 			return FacebookIcon;
 		case 'Github':
@@ -29,14 +27,12 @@ export default function getIcon({ name }: { name: string }) {
 		case 'Linkedin':
 			return LinkedinIcon;
 		case 'Loading':
-			return RotatingGearIcon;
+			return PersonalLogoAnimated;
 		case 'Logo':
 			return PersonalLogo;
-		case 'LogoAnimated':
-			return PersonalLogoAnimated;
-		case 'Project':
+		case 'Projects':
 			return ProjectIcon;
-		case 'Skill':
+		case 'Skills':
 			return SkillIcon;
 		case 'Twitter':
 			return TwitterIcon;
