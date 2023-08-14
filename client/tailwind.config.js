@@ -1,10 +1,26 @@
 /** @type {import('tailwindcss').Config} */
+
+import defaultTheme from 'tailwindcss/defaultTheme';
 module.exports = {
 	content: [
 		"./src/**/*.ts",
 		"./**/*.html"
 	],
 	theme: {
+		extend: {
+			spacing: {
+				'header-height': '4rem'
+			},
+			fontFamily: {
+				'layout': ['AvenirBook', 'AvenirRoman', ...defaultTheme.fontFamily.sans],
+				'intro': ['PromptMedium', 'AvenirBook', 'AvenirRoman', 'sans-serif'],
+			}
+		},
+		fontFamily: {
+			sans: ['Roboto', 'AvenirBook', 'AvenirRoman', ...defaultTheme.fontFamily.sans],
+			heading: ['AvenirBook', 'AvenirRoman', 'sans-serif'],
+			body: ['Roboto', 'AvenirRoman', 'AvenirBook']
+		},
 		colors: {
 			'midnight': {
 				DEFAULT: '#001C30',
@@ -25,11 +41,7 @@ module.exports = {
 				DEFAULT: '#DAFFFB'
 			}
 		},
-		extend: {
-			spacing: {
-				'header-height': '4rem'
-			}
-		},
+
 	},
 	variants: {
 		extend: {},

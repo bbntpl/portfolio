@@ -15,6 +15,7 @@ export default class ParallaxScroll {
 	}: ParallaxScrollConstructorArgs) {
 		this.#parallaxContainer = document.createElement('div');
 		this.#parallaxBackground = document.createElement('div');
+		this.#parallaxContainer.id = 'parallax';
 
 		this.#parallaxContainer.appendChild(contentElement);
 		this.#parallaxContainer.appendChild(this.#parallaxBackground);
@@ -24,9 +25,10 @@ export default class ParallaxScroll {
 			containerBgColor,
 			'relative',
 			'overflow-hidden',
-			'h-screen',
 			'parallax-container',
+			'min-h-screen'
 		);
+
 		this.#parallaxBackground.classList.add(
 			'absolute',
 			'top-0',
@@ -34,6 +36,8 @@ export default class ParallaxScroll {
 			'w-full',
 			'h-full',
 			'bg-cover',
+			'bg-center',
+			'bg-fixed',
 			'parallax-bg',
 		);
 		this.#parallaxBackground.style.backgroundImage = `url('${backgroundUrl}')`;
@@ -41,7 +45,13 @@ export default class ParallaxScroll {
 		// Apply parallax scroll effect
 		window.addEventListener('scroll', () => {
 			const scrolled = window.scrollY;
-			this.#parallaxBackground.style.transform = `translateY(-${scrolled * 0.5}px)`; // Adjust the factor for desired speed
+			const factor = `translateY(-${scrolled * 0.05}px)`;
+			this.#parallaxBackground.style.transform = factor;
+			// const scrolltotop = document.scrollingElement.scrollTop;
+			// const xvalue = 'center';
+			// const factor = 0.2;
+			// const yvalue = scrolltotop * factor;
+			// this.#parallaxBackground.style.backgroundPosition = `${xvalue} ${yvalue}px`;
 		});
 	}
 

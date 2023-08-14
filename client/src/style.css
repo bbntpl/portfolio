@@ -2,27 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'AvenirBook';
-    src: url('./assets/fonts/Avenir-Book.otf');
-    font-weight: normal;
-    font-style: normal;
+@layer base {
+  @font-face {
+    font-family: "AvenirBook";
+    src: font-url("./assets/fonts/Avenir-Book.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "AvenirRoman";
+    src: font-url("./assets/fonts/Avenir-Roman.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "PromptExtraLight";
+    src: font-url("./assets/fonts/Prompt-ExtraLight.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "PromptLight";
+    src: font-url("./assets/fonts/Prompt-Light.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "PromptMedium";
+    src: font-url("./assets/fonts/Prompt-Medium.woff2") format("woff2");
+  }
 }
 
-@font-face {
-    font-family: 'AvenirRoman';
-    src: url('./assets/fonts/Avenir-Roman.otf');
-    font-weight: normal;
-    font-style: normal;
-}
-
-#header {
-    font-family: 'AvenirBook', 'AvenirRoman'; 
-}
-
-svg text{
-   -webkit-user-select: none;
-   -moz-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
+svg text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

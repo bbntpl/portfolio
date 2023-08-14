@@ -4,6 +4,10 @@ interface HeaderListArgs {
 	name: string;
 }
 
+interface HeaderInstanceArgs {
+	scrollableEl: HTMLElement;
+}
+
 export default class Header {
 	#container: HTMLDivElement;
 	#logoSrc: string;
@@ -11,15 +15,12 @@ export default class Header {
 	#logoWrapper: HTMLDivElement;
 	#sectionList: HTMLUListElement;
 
-	constructor() {
-
+	constructor({ scrollableEl }: HeaderInstanceArgs) {
 		this.#container = document.createElement('div');
 		this.#container.id = 'header';
-
 		this.#logoWrapper = document.createElement('div');
 		this.#logoWrapper.id = 'logo-wrapper';
 
-		// Setup logo icons
 		this.#logoSrc = getIcon({ name: 'Logo' });
 
 		this.#logoObject = document.createElement('object');
@@ -27,7 +28,7 @@ export default class Header {
 		this.#logoObject.setAttribute('data', this.#logoSrc);
 		this.#logoObject.setAttribute('width', '50');
 		this.#logoObject.setAttribute('height', '50');
-		console.log(this.#logoObject.contentDocument)
+
 
 		// add classes to apply styles
 		this.#logoObject.classList.add(
@@ -43,9 +44,8 @@ export default class Header {
 			'sm:px-3',
 			'py-2',
 			'w-full',
-			'z-20'
+			'z-20',
 		)
-
 		this.#sectionList = this.createMenuList([
 			{ name: 'about' },
 			{ name: 'skills' },
@@ -53,9 +53,15 @@ export default class Header {
 			{ name: 'education' },
 		]);
 
+		// append the elements to the parent
 		this.#logoWrapper.appendChild(this.#logoObject);
 		this.#container.appendChild(this.#logoWrapper);
 		this.#container.appendChild(this.#sectionList);
+
+		// Add events
+		scrollableEl.addEventListener('scroll', () => {
+			console.log(window.scrollY);
+		});
 	}
 
 	private createMenuList(items: Array<HeaderListArgs>): HTMLUListElement {
@@ -67,7 +73,8 @@ export default class Header {
 			'items-center',
 			'space-x-4',
 			'md:space-x-6',
-			'lg:space-x-8'
+			'lg:space-x-8',
+			'font-layout'
 		);
 
 		for (let i = 0; i < items.length; i++) {

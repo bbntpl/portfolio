@@ -6,7 +6,7 @@ import LoadingScreen from './components/LoadingScreen';
 import ParallaxBgImage from './assets/images/parallax-bg.png';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import NavMenu from './components/layout/NavMenu';
+import ProgressIndicator from './components/layout/ProgressIndicator';
 import ParallaxScroll from './lib/parallax-scroll';
 import Intro from './components/sections/Intro';
 import About from './components/sections/About';
@@ -21,7 +21,7 @@ class App {
 	header: Header;
 	footer: Footer;
 	main: HTMLElement;
-	navMenu: NavMenu;
+	progressIndicator: ProgressIndicator;
 
 	introSection: Intro;
 	aboutSection: About;
@@ -38,14 +38,14 @@ class App {
 		this.containerEl.className = 'main-content';
 
 		// Create instances of main layout components
-		this.header = new Header();
-		this.footer = new Footer();
 		this.main = document.createElement('main');
-		this.navMenu = new NavMenu();
+		this.header = new Header({ scrollableEl: this.main });
+		this.footer = new Footer();
+		this.progressIndicator = new ProgressIndicator();
 
 		// Append main layout components
 		this.containerEl.appendChild(this.header.getElement());
-		this.containerEl.appendChild(this.navMenu.getElement());
+		this.containerEl.appendChild(this.progressIndicator.getElement());
 		this.containerEl.appendChild(this.main);
 		this.containerEl.appendChild(this.footer.getElement());
 
@@ -69,7 +69,7 @@ class App {
 			'flex-col',
 			'min-h-screen',
 			'h-max',
-			'overflow-y-hidden'
+			'overflow-hidden',
 		)
 		this.main.classList.add(
 			'min-h-screen',

@@ -4,7 +4,7 @@ export default class Intro {
 	#nameText: HTMLDivElement;
 	#identityText: HTMLDivElement;
 	constructor() {
-		this.#introSection = document.createElement('div');
+		this.#introSection = document.createElement('section');
 		this.#welcomeText = document.createElement('div');
 		this.#nameText = document.createElement('div');
 		this.#identityText = document.createElement('div');
@@ -24,7 +24,8 @@ export default class Intro {
 			'flex-col',
 			'justify-center',
 			'pb-24',
-			'select-none'
+			'select-none',
+			'font-intro'
 		)
 		this.#welcomeText.classList.add(
 			'text-lg',
@@ -32,7 +33,8 @@ export default class Intro {
 			'text-center',
 			'text-downy-200',
 			'mb-10',
-			'sm:text-2xl',
+			'sm:text-lg',
+			'md:text-2xl',
 			'md:text-3xl',
 		);
 		this.#nameText.classList.add('text-2xl',
@@ -51,9 +53,9 @@ export default class Intro {
 			'text-base',
 			'text-center',
 			'text-bluemine-400',
-			'sm:text-lg',
-			'md:text-xl',
-			'lg:text-2xl'
+			'sm:text-xl',
+			'md:text-2xl',
+			'lg:text-3xl'
 		);
 
 	}
