@@ -16,7 +16,7 @@ interface SocialMediaLink {
 
 interface RandomFact {
 	label: string;
-	value: string;
+	value: string | number;
 }
 
 export interface Profile {
@@ -27,24 +27,45 @@ export interface Profile {
 	randomFacts: Array<RandomFact> | null;
 }
 
+export const SkillCategories = {
+	frontend: 'Front-end',
+	backend: 'Back-end',
+	devtools: 'Dev Tools',
+	others: 'Others'
+} as const;
+
+export const SkillLevels = {
+	0: 'beginner',
+	1: 'intermediate',
+	2: 'experienced'
+} as const;
+
+export type SkillLevelsValues = 'beginner' | 'intermediate' | 'experienced';
+export type SkillCategoriesKeys = keyof typeof SkillCategories;
+export type SkillCategoriesValues = keyof typeof SkillCategories[keyof typeof SkillCategories];
 export interface Skill {
-	level: 'beginner' | 'intermediate' | 'experienced';
+	level: SkillLevelsValues;
 	name: string;
-	category: 'Front-end' | 'Back-end' | 'Dev Tools' | 'Others';
+	category: SkillCategoriesKeys;
 }
 
 export type Skillset = Array<Skill>;
 
 export type Sections = 'About' | 'Education' | 'Projects' | 'Skills';
 
-export interface Education {
-	school: string;
-	degree: string;
+export interface SelfDirectedCourse {
+	name: string;
 	fieldOfStudy: string;
 	startDate: string;
-	endDate: string;
+	endDate?: string;
 	description?: string;
 }
+
+export interface UniversityDegree extends SelfDirectedCourse {
+	degree: string;
+}
+
+export type Education = UniversityDegree | SelfDirectedCourse;
 
 interface Topic {
 	name: string;
@@ -64,6 +85,6 @@ export interface Project {
 export interface Portfolio {
 	profile: Profile;
 	skillset: Skillset;
-	educationalBackgrounds: Education[];
-	projects: Project[];
+	educationalBackgrounds: Array<UniversityDegree | SelfDirectedCourse>;
+	projects: Array<Project>;
 }

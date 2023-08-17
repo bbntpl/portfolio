@@ -33,16 +33,18 @@ export default class Header {
 		// add classes to apply styles
 		this.#logoObject.classList.add(
 			'select-none',
-			'pointer-events-auto'
+			'pointer-events-auto',
 		)
 		this.#container.classList.add(
 			'flex',
 			'fixed',
-			'justify-between',
+			'justify-center',
+			'md:justify-between',
+			'lg:justify-between',
 			'top-0',
+			'px-6',
 			'md:px-8',
-			'sm:px-3',
-			'py-2',
+			'py-4',
 			'w-full',
 			'z-20',
 		)
@@ -59,17 +61,18 @@ export default class Header {
 		this.#container.appendChild(this.#sectionList);
 
 		// Add events
-		scrollableEl.addEventListener('scroll', () => {
-			console.log(window.scrollY);
-		});
+		// scrollableEl.addEventListener('scroll', () => {
+		// 	console.log(window.scrollY);
+		// });
 	}
 
 	private createMenuList(items: Array<HeaderListArgs>): HTMLUListElement {
 		const sectionSelection = document.createElement('ul');
 		sectionSelection.classList.add(
-			'md:flex',
 			'hidden',
+			'md:flex',
 			'lg:flex',
+			'xl:flex',
 			'items-center',
 			'space-x-4',
 			'md:space-x-6',

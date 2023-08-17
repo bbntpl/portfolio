@@ -6,6 +6,12 @@ module.exports = {
 		"./src/**/*.ts",
 		"./**/*.html"
 	],
+	// added for dynamically applied classnames
+	safelist: [
+		{
+			pattern: /(bg|text|border)-(bluemine|downy|frostedmint)-(100|400|500|source)/
+		}
+	],
 	theme: {
 		extend: {
 			spacing: {
@@ -15,6 +21,13 @@ module.exports = {
 				'layout': ['AvenirBook', 'AvenirRoman', ...defaultTheme.fontFamily.sans],
 				'intro': ['PromptMedium', 'AvenirBook', 'AvenirRoman', 'sans-serif'],
 			}
+		},
+		backgroundSize: {
+			'auto': 'auto',
+			'cover': 'cover',
+			'contain': 'contain',
+			'80%': '80%',
+			'125%': '125%',
 		},
 		fontFamily: {
 			sans: ['Roboto', 'AvenirBook', 'AvenirRoman', ...defaultTheme.fontFamily.sans],
@@ -26,6 +39,8 @@ module.exports = {
 				DEFAULT: '#001C30',
 			},
 			'bluemine': {
+				100: '#D6DDE8',
+				200: '#A7CCDE',
 				300: '#86B8CF',
 				400: '#66A3BE',
 				source: '#176B87'
@@ -34,11 +49,12 @@ module.exports = {
 				100: '#C2E4E0',
 				200: '#9AD1CC',
 				300: '#73BDB8',
+				500: '#26958F',
 				700: '#006B66',
 				source: '#64CCC5'
 			},
 			'frostedmint': {
-				DEFAULT: '#DAFFFB'
+				source: '#DAFFFB'
 			}
 		},
 

@@ -11,7 +11,7 @@ interface SocialMediaLink {
 
 interface RandomFact {
 	label: string;
-	value: string;
+	value: string | number;
 }
 
 export interface Profile {
@@ -22,21 +22,26 @@ export interface Profile {
 	randomFacts: Array<RandomFact> | null;
 }
 
+type SkillLevel = 'beginner' | 'intermediate' | 'experienced';
+type SkillCategory = 'frontend' | 'backend' | 'devtools' | 'others';
 export interface Skill {
-	level: 'beginner' | 'intermediate' | 'experienced';
+	level: SkillLevel;
 	name: string;
-	category: 'Front-end' | 'Back-end' | 'Dev Tools' | 'Others';
+	category: SkillCategory;
 }
 
 export type Skillset = Array<Skill>;
 
-export interface Education {
-	school: string;
-	degree: string;
+export interface SelfDirectedCourse {
+	name: string;
 	fieldOfStudy: string;
 	startDate: string;
-	endDate: string;
+	endDate?: string;
 	description?: string;
+}
+
+export interface UniversityDegree extends SelfDirectedCourse {
+	degree: string;
 }
 
 interface Topic {
@@ -57,6 +62,6 @@ export interface Project {
 export interface Portfolio {
 	profile: Profile;
 	skillset: Skillset;
-	educationalBackgrounds: Education[];
-	projects: Project[];
+	educationalBackgrounds: Array<UniversityDegree | SelfDirectedCourse>;
+	projects: Array<Project>;
 }

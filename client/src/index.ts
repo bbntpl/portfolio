@@ -1,5 +1,5 @@
 import DataRepository from './DataRepository';
-import { Portfolio } from './types';
+import { Portfolio, Education } from './types';
 
 import './style.css';
 import LoadingScreen from './components/LoadingScreen';
@@ -40,7 +40,9 @@ class App {
 		// Create instances of main layout components
 		this.main = document.createElement('main');
 		this.header = new Header({ scrollableEl: this.main });
-		this.footer = new Footer();
+		this.footer = new Footer({
+			githubLink: this.data.profile.socialMediaLinks.find(s => s.platform === 'Github').url
+		});
 		this.progressIndicator = new ProgressIndicator();
 
 		// Append main layout components
@@ -52,9 +54,17 @@ class App {
 		// Create and append portfolio sections as a child to main element
 		this.introSection = new Intro();
 		this.aboutSection = new About(this.data.profile);
+		this.skillsSection = new Skills({ skills: this.data.skillset });
+		this.projectsSection = new Projects({ projects: this.data.projects });
+		this.educationSection = new EducationalBackgrounds({
+			educationalBackgrounds: this.data.educationalBackgrounds
+		});
 
 		this.main.appendChild(this.introSection.getElement());
 		this.main.appendChild(this.aboutSection.getElement());
+		this.main.appendChild(this.skillsSection.getElement());
+		this.main.appendChild(this.projectsSection.getElement());
+		this.main.appendChild(this.educationSection.getElement());
 
 		const parallaxElement = new ParallaxScroll({
 			containerBgColor: 'bg-midnight',

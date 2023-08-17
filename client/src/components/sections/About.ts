@@ -39,14 +39,20 @@ export default class About {
 		this.#container.appendChild(this.#leftSideContent);
 		this.#container.appendChild(this.#rightSideContent);
 		this.#leftSideContent.appendChild(this.#imageWrapper);
+		this.#imageWrapper.appendChild(this.#image);
 		this.#leftSideContent.appendChild(this.#socialLinksList);
-		this.#rightSideContent.appendChild(this.#randomFactsList);
 
 		for (const socialMedia of socialMediaLinks) {
 			const socialLink = document.createElement('a');
 			const socialIcon = new Image();
+			socialIcon.setAttribute('width', '32px');
+			socialIcon.setAttribute('height', '32px');
 			socialLink.href = socialMedia.url;
+			socialLink.target = '_blank';
 			socialIcon.src = getIcon({ name: socialMedia.platform });
+
+			socialLink.appendChild(socialIcon);
+			this.#socialLinksList.appendChild(socialLink);
 		}
 
 		// add about paragraphs
@@ -61,23 +67,70 @@ export default class About {
 		}
 
 		// add extra facts about me
+		this.#rightSideContent.appendChild(this.#randomFactsList);
 		if (randomFacts !== null && randomFacts?.length > 0) {
 			for (const fact of randomFacts) {
+				const factContainer = document.createElement('div');
 				const termEl = document.createElement('dt');
-				termEl.textContent = fact.label;
+				termEl.textContent = `${fact.label}:`;
 				const descEl = document.createElement('dd');
-				descEl.textContent = fact.value;
-				this.#randomFactsList.appendChild(termEl);
-				this.#randomFactsList.appendChild(descEl);
+				descEl.textContent = String(fact.value);
+				factContainer.appendChild(termEl);
+				factContainer.appendChild(descEl);
+				this.#randomFactsList.appendChild(factContainer);
+
+				factContainer.classList.add('flex', 'flex-row', 'gap-2');
 			}
 		}
 
 		// add classnames to elements to apply tailwind css styles
-		this.#sectionName.classList.add(
-			'text-2xl',
-			'text-bluemine-300',
-			'uppercase'
+		this.#image.style.minWidth = '100%';
+		this.#image.style.maxWidth = '350px';
+		this.#portfolioSection.classList.add('portfolio-section');
+		this.#sectionName.classList.add('section-text-heading');
+		this.#container.classList.add(
+			'flex',
+			'gap-4',
+			'md:gap-8',
+			'lg:gap-10',
+			'xl:gap-14',
+			'font-sans',
+			'text-bluemine-200',
+			'flex-col',
+			'lg:flex-row',
+			'xl:flex-row',
+			'2xl:flex-row',
+			'space-between',
+			'items-center',
+			'lg:items-start',
+			'xl:items-start',
 		)
+		this.#leftSideContent.classList.add(
+			'flex',
+			'flex-col',
+			'lg:flex-row',
+			'xl:flex-row',
+			'2xl:flex-row',
+			'items-center',
+			'lg:items-start',
+			'xl:items-start',
+			'2xl:items-start',
+			'gap-4'
+		)
+		this.#socialLinksList.classList.add(
+			'flex',
+			'flex-wrap',
+			'flex-row',
+			'sm:flex-row',
+			'md:flex-row',
+			'lg:flex-col',
+			'xl:flex-col',
+			'2xl:flex-col',
+			'gap-4',
+			'min-w-8',
+			'w-max'
+		)
+
 	}
 
 	public getElement(): HTMLElement {

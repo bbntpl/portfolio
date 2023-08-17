@@ -35,8 +35,8 @@ export default class ParallaxScroll {
 			'left-0',
 			'w-full',
 			'h-full',
-			'bg-cover',
-			'bg-center',
+			'bg-80%',
+			'bg-top',
 			'bg-fixed',
 			'parallax-bg',
 		);
@@ -44,14 +44,11 @@ export default class ParallaxScroll {
 
 		// Apply parallax scroll effect
 		window.addEventListener('scroll', () => {
-			const scrolled = window.scrollY;
-			const factor = `translateY(-${scrolled * 0.05}px)`;
-			this.#parallaxBackground.style.transform = factor;
-			// const scrolltotop = document.scrollingElement.scrollTop;
-			// const xvalue = 'center';
-			// const factor = 0.2;
-			// const yvalue = scrolltotop * factor;
-			// this.#parallaxBackground.style.backgroundPosition = `${xvalue} ${yvalue}px`;
+			const scrolltotop = document.scrollingElement.scrollTop;
+			const xvalue = 'center';
+			const factor = 0.2;
+			const yvalue = scrolltotop * factor;
+			this.#parallaxBackground.style.backgroundPosition = `${xvalue} ${yvalue}px`;
 		});
 	}
 
