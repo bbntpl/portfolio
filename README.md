@@ -1,8 +1,8 @@
 # Portfolio v1
-The first version of my portfolio which is a skills/projects-based type.
+The first version of my portfolio which is a skills/projects-based type and dynamically structured using Github API.
 
 ## Portfolio Inspirations
-- [Ramki Pitchala] (https://github.com/Ramko9999/Portfolio)
+- [Ramki Pitchala](https://github.com/Ramko9999/Portfolio)
 
 ## Color Palette
 - Midnight (#001C30)
