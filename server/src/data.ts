@@ -7,12 +7,14 @@ export const educationalBackgrounds: Array<UniversityDegree | SelfDirectedCourse
 		fieldOfStudy: 'Computer Programming',
 		startDate: 'August 2018',
 		endDate: 'August 2020',
+		description: 'I learned the following programming languages: C#, C++, Java, SQL, Visual BASIC, COBOL, etc.'
 	},
 	{
 		name: 'The Odin Project',
 		fieldOfStudy: 'Full-stack Development',
 		startDate: 'January 2022',
-		endDate: '2023'
+		endDate: '2023',
+		description: 'The Odin Project guided me towards acquiring full-stack development skills. The course authors equipped learners with valuable tools and best practices for becoming successful full-stack developers. Thanks to the authors of TOP, I\'ve gained proficiency in both front-end/backend development skills listed above and soft skills I have developed myself throughout the process of learning.'
 	}, {
 		name: 'FullStackOpen',
 		fieldOfStudy: 'Full-stack Development',
