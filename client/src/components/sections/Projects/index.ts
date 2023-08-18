@@ -1,4 +1,4 @@
-import { Project } from '../../types'
+import { Project } from './index.types';
 
 type ProjectsInstanceArgs = {
 	projects: Array<Project>

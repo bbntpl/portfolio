@@ -5,7 +5,7 @@ import {
 	SkillLevels,
 	SkillCategoriesKeys,
 	SkillCategoriesValues
-} from '../../types';
+} from './index.types';
 
 interface SkillsInstanceArgs {
 	skills: Array<Skill>

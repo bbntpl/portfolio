@@ -5,24 +5,23 @@ export const educationalBackgrounds: Array<UniversityDegree | SelfDirectedCourse
 		name: 'Coastal Carolina Community College',
 		degree: 'Associates in Applied Science',
 		fieldOfStudy: 'Computer Programming',
-		startDate: 'August 15, 2018',
-		endDate: 'August 7, 2020',
+		startDate: 'August 2018',
+		endDate: 'August 2020',
 	},
 	{
 		name: 'The Odin Project',
 		fieldOfStudy: 'Full-stack Development',
-		startDate: 'January 1, 2022',
+		startDate: 'January 2022',
 		endDate: '2023'
 	}, {
 		name: 'FullStackOpen',
 		fieldOfStudy: 'Full-stack Development',
 		startDate: 'March 2023',
-		endDate: '2023'
 	}
 ]
 
 export const aboutMeInfo: Profile = {
-	imageUrl: 'https://scontent-atl3-1.xx.fbcdn.net/v/t39.30808-6/366247222_334221355596635_1691506449379061311_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=be3454&_nc_ohc=wWDAwVN_jmYAX_POZ9w&_nc_ht=scontent-atl3-1.xx&oh=00_AfCf4t5JHmyDe9CqSb47YkWddwaZCYXXzWKBtGcSdkU_-A&oe=64DE3CFC',
+	imageUrl: 'https://lh3.googleusercontent.com/fife/AKsag4NhJust1IqeNdNgxYWx088iGZkS_W85O_p8wQTEnetz3zC6BIbjP-ng2BCyi0K_kSA58AWrQ9EgqykVOHhg0mhl3S8T3Dma2QmafKv5Tvfvqg1X7tLzE27zZjNlS85xfpNQ-THIwKy4wTRj6UNYqx3-RDwS3kPMRiI2E9z1uzR0UViaV7XxgL2w9cCejKK_mTA9I1x6cMS_Oyvi7-MS0b_7WeR7oUVNh6xe_qfN9cr3KoytCOHTy64yA2UGQMinMAGaYqsw8UZt8BpEMLyHgTnqR_1i1I6WTYonj7AMVWTV5EsTrNjvKFcTbpK2oFGLZD1DNb9qJsl4SsZ5o5xHweCMPAIb9-Q6lRDfZkjg2DZnBHdAaCYhZIW4xkhyz94CRDccbmVU9wyTMnkth4QSUE8WG_mosSiyLXtTFrW3Lb7w7L9lj4bb-ClI9g4aSv05dZLrKiCYH2foKqP6bOpfwzI1qjiuE0smH4NUZZlgl8WO4TM3Po1ahkTSg4maK-1x0ztR733iTerN7x5poSvS-mUFKpRgbw3fPm5S0K_MXPI_lU1B20R2gmmKOaaJmQKiduintExIh4XRQ1GQnfFdXibCPb4ByY-MM0blAFqCNV0D0Y4SqhxxAU1RcRukK4_6g8pipBikLm2_4bUuyVDw8sJd8BtMV00hdYZffS4zltcWgbDjK23bmgilkmoQWd5Trj9nEJtAW-oLiPHxoGw_REBjJqhHYaUu1sfW4lZ-hHfFbxLCOqQ7hroPiT5qKvH11g_-5sDM2mkv4YmE4XfbbCKxL0lwyE__I3rkf2KE_n1239Hr6ejbnpUlsv7YD4TrxGGRKiHWc5ZDtmk9Rs3J5bWJFT-b3QfsGruzlQBn824OVT1Kr7QszqRT1bUTIrtCUd0s5xXG7D-WSPZA70izxBEr1pxsfXFAp_Ys63YacFpQinUApDnkVWKtDSqCgAXImaa2pexYnzuiP5tuRme4VZxRZvD6Zr2V1qznsEsB7dWdx7BOi3wRZcfZtsShIUTdSVXPshjTu8Z20SexhedcOU-lsI34UK7ap4lAdfwO8fE3G-HlGkUqLmhJfQwSgJ-7sdrI5WBmZVChhy-Tg9nb9kJQ4xP2Nsgy=w958-h935',
 	socialMediaLinks: [
 		{
 			platform: 'Facebook',
@@ -87,3 +86,4 @@ export const mySkillset: Skillset = [
 	{ level: 'experienced', name: 'Codepen', category: 'others' },
 	{ level: 'intermediate', name: 'VSCodeVim', category: 'others' }
 ]
+

@@ -1,5 +1,5 @@
 import DataRepository from './DataRepository';
-import { Portfolio, Education } from './types';
+import { Portfolio } from './types';
 
 import './style.css';
 import LoadingScreen from './components/LoadingScreen';

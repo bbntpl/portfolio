@@ -37,9 +37,10 @@ module.exports = {
 		colors: {
 			'midnight': {
 				DEFAULT: '#001C30',
+				100: '#D6DDE8'
 			},
 			'bluemine': {
-				100: '#D6DDE8',
+				100: '#CAE0EC',
 				200: '#A7CCDE',
 				300: '#86B8CF',
 				400: '#66A3BE',
@@ -54,7 +55,10 @@ module.exports = {
 				source: '#64CCC5'
 			},
 			'frostedmint': {
-				source: '#DAFFFB'
+				600: '#577875',
+				800: '#36504E',
+				900: '#283D3B',
+				source: '#DAFFFB',
 			}
 		},
 

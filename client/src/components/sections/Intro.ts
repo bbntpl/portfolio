@@ -31,7 +31,7 @@ export default class Intro {
 			'text-lg',
 			'font-bold',
 			'text-center',
-			'text-downy-200',
+			'text-downy-100',
 			'mb-10',
 			'sm:text-lg',
 			'md:text-2xl',
@@ -40,7 +40,7 @@ export default class Intro {
 		this.#nameText.classList.add('text-2xl',
 			'font-semibold',
 			'text-center',
-			'text-bluemine-300',
+			'text-bluemine-200',
 			'mb-7',
 			'text-4xl',
 			'sm:text-5xl',
@@ -52,7 +52,7 @@ export default class Intro {
 		this.#identityText.classList.add(
 			'text-base',
 			'text-center',
-			'text-bluemine-400',
+			'text-bluemine-300',
 			'sm:text-xl',
 			'md:text-2xl',
 			'lg:text-3xl'

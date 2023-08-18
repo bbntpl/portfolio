@@ -39,6 +39,7 @@ export default class ParallaxScroll {
 			'bg-top',
 			'bg-fixed',
 			'parallax-bg',
+			'opacity-60'
 		);
 		this.#parallaxBackground.style.backgroundImage = `url('${backgroundUrl}')`;
 

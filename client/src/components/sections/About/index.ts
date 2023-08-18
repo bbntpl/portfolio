@@ -1,5 +1,5 @@
-import { Profile } from '../../types';
-import getIcon from '../icons';
+import { Profile } from './index.types';
+import getIcon from '../../icons';
 
 export default class About {
 	#portfolioSection: HTMLElement;
