@@ -55,7 +55,7 @@ export default class About {
 			this.#socialLinksList.appendChild(socialLink);
 		}
 
-		// add about paragraphs
+		// Add about paragraphs
 		for (const paragraph of about) {
 			const paragraphElement = document.createElement('p');
 			paragraphElement.classList.add(
@@ -66,7 +66,7 @@ export default class About {
 			this.#rightSideContent.appendChild(paragraphElement);
 		}
 
-		// add extra facts about me
+		// Add extra facts about me
 		this.#rightSideContent.appendChild(this.#randomFactsList);
 		if (randomFacts !== null && randomFacts?.length > 0) {
 			for (const fact of randomFacts) {
@@ -83,7 +83,7 @@ export default class About {
 			}
 		}
 
-		// add classnames to elements to apply tailwind css styles
+		// Add classnames to elements to apply tailwind css styles
 		this.#image.style.minWidth = '100%';
 		this.#image.style.maxWidth = '350px';
 		this.#portfolioSection.classList.add('portfolio-section');

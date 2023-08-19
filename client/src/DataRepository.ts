@@ -32,7 +32,6 @@ export default class DataRepository {
 			}
 
 			this.portfolioData = response.data;
-			console.log(this.portfolioData);
 		} catch (error) {
 			throw new Error(error.message || 'Failed to fetch portfolio data.');
 		}

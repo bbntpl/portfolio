@@ -136,7 +136,7 @@ export default class Skills {
 		)
 		skillCategoryText.classList.add(
 			'mb-4',
-			'text-bluemine-300',
+			'text-bluemine-200',
 			'text-xl'
 		)
 		skillList.classList.add(
@@ -156,11 +156,19 @@ export default class Skills {
 			const skillText = document.createElement('p');
 			skillText.textContent = skill.name;
 
-			// color and skill level are associated by arr index
+			// Color and skill level are associated by their indexes
+			// E.g. colors[0] -> skillLevel[0] and so on...
 			const colorIndex = skillLevels.findIndex(l => l.value === skill.level);
 			const color = skillLevelColors[colorIndex];
-			const textColor = `text-${color}`
-			const borderColor = `border-${color}`
+			const textColor = `text-${color}`;
+			const borderColor = `border-${color}`;
+			const bgColor = `bg-${color}`;
+
+			// Skill elements are to apply their own tier-esque minimal styling based on experience level
+			const skillLevelTierStylings = colorIndex === skillLevels.length - 1
+				? [borderColor, bgColor]
+				: [borderColor];
+			const skillLevelText = colorIndex === skillLevels.length - 1 ? 'text-midnight' : textColor;
 
 			skillEl.classList.add(
 				'flex',
@@ -169,13 +177,13 @@ export default class Skills {
 				'items-start',
 				'px-6',
 				'py-2',
-				borderColor,
+				...skillLevelTierStylings,
 				'border-2',
 				'rounded-md',
 			)
 
 			skillText.classList.add(
-				textColor,
+				skillLevelText,
 				'font-semibold'
 			)
 

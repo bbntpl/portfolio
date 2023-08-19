@@ -1,6 +1,6 @@
 export const SkillCategories = {
 	frontend: 'Front-end',
-	backend: 'Back-end',
+	backend: 'Backend',
 	devtools: 'Dev Tools',
 	others: 'Others'
 } as const;

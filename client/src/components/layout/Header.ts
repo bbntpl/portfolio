@@ -30,7 +30,7 @@ export default class Header {
 		this.#logoObject.setAttribute('height', '50');
 
 
-		// add classes to apply styles
+		// Add classes to apply styles
 		this.#logoObject.classList.add(
 			'select-none',
 			'pointer-events-auto',
@@ -55,7 +55,7 @@ export default class Header {
 			{ name: 'education' },
 		]);
 
-		// append the elements to the parent
+		// Append the elements to the parent
 		this.#logoWrapper.appendChild(this.#logoObject);
 		this.#container.appendChild(this.#logoWrapper);
 		this.#container.appendChild(this.#sectionList);
