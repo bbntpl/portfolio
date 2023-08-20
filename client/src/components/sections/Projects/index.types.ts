@@ -6,7 +6,7 @@ export interface Project {
 	id: number,
 	title: string;
 	url: string;
-	imageUrl: string;
+	homepage: string;
 	description: string;
 	createdAt: string;
 	topics: Topic[];

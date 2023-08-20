@@ -31,17 +31,24 @@ export default class Projects {
 		this.#secondaryProjectListLinkWrapper.appendChild(this.#secondaryProjectListLink);
 
 		for (const project of projects) {
-			this.#container.appendChild(this.createProjectEl(project))
+			this.#projectGrids.appendChild(this.createProjectGridItem(project))
 		}
 
 		this.#portfolioSection.classList.add('portfolio-section');
 		this.#sectionName.classList.add('section-text-heading');
 		this.#container.classList.add(
 			'flex',
-			'flex-row',
-			'justify-center',
+			'flex-col',
+			'items-center',
 			'font-sans'
 		);
+		this.#projectGrids.classList.add(
+			'flex',
+			'flex-row',
+			'flex-wrap',
+			'my-12',
+			'justify-center'
+		)
 		this.#secondaryProjectListLinkWrapper.classList.add(
 			'bg-bluemine-300',
 			'text-sm',
@@ -54,15 +61,83 @@ export default class Projects {
 			'px-4',
 			'py-2',
 			'top-0',
-			'bottom-0',
+			'bottom-0'
 		)
 	}
 
-	private createProjectEl(project: Project): HTMLDivElement {
-		const projectEl = document.createElement('div');
-		console.log(project);
+	private createProjectGridItem(project: Project): HTMLDivElement {
+		const splitDesc = project.description.split('|');
+		const projectTitle = splitDesc[0];
+		const projectDesc = splitDesc[1];
+		const projectImage = splitDesc[2];
 
-		return projectEl;
+		const rootEl = document.createElement('div');
+		const bgImage: HTMLImageElement = new Image();
+		bgImage.src = projectImage;
+		const projectInfoWrapper = document.createElement('div');
+
+		const titleEl = document.createElement('h3');
+		titleEl.textContent = projectTitle;
+
+		const projectLinks = document.createElement('div');
+		const repoLinkWrapper = document.createElement('div');
+		const websiteLinkWrapper = document.createElement('div');
+		const repoLink = document.createElement('a');
+		repoLink.textContent = 'visit repo';
+		repoLink.href = project.url;
+		const websiteLink = document.createElement('a');
+		websiteLink.textContent = 'access live demo';
+		websiteLink.href = project.url;
+		const descriptionEl = document.createElement('p');
+
+		rootEl.appendChild(bgImage);
+		rootEl.appendChild(projectInfoWrapper);
+		projectInfoWrapper.appendChild(titleEl);
+		projectInfoWrapper.appendChild(projectLinks);
+		projectLinks.appendChild(repoLinkWrapper);
+		projectLinks.appendChild(websiteLinkWrapper);
+		repoLinkWrapper.appendChild(repoLink);
+		websiteLinkWrapper.appendChild(websiteLink);
+		projectInfoWrapper.appendChild(descriptionEl);
+
+		const absoluteWrapperStyles = [
+			'absolute',
+			'w-full',
+			'h-full',
+			'top-0',
+			'left-0',
+		]
+		rootEl.classList.add(
+			'relative',
+			'w-96',
+			'h-96'
+		);
+		bgImage.classList.add(
+			...absoluteWrapperStyles,
+			'z-15',
+			'bg-bottom'
+		);
+		projectInfoWrapper.classList.add(
+			...absoluteWrapperStyles,
+			'z-20',
+			'flex',
+			'flex-col',
+			'justify-start',
+			'items-center',
+			'bg-midnight',
+			'opacity-20',
+			'bg-blend-lighten',
+			'hover:bg-blend-darken'
+		);
+		projectLinks.classList.add(
+			'flex',
+			'content-center'
+		)
+		descriptionEl.classList.add(
+			'text-sm'
+		)
+
+		return rootEl;
 	}
 
 	public getElement(): HTMLElement {

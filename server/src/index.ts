@@ -33,7 +33,7 @@ app.get('/api/data', async function (req, res, next) {
 				topics,
 				url: repo.html_url,
 				createdAt: repo.created_at,
-				imageUrl: repo.homepage,
+				homepage: repo.homepage,
 				updatedAt: repo.updated_at
 			}
 
