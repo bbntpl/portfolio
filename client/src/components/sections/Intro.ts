@@ -1,24 +1,24 @@
-export default class Intro {
-	#introSection: HTMLElement;
-	#welcomeText: HTMLDivElement;
-	#nameText: HTMLDivElement;
-	#identityText: HTMLDivElement;
+export default class IntroSection {
+	#rootContainer: HTMLElement;
+	#welcomeText: HTMLHeadingElement;
+	#nameText: HTMLHeadingElement;
+	#identityText: HTMLHeadingElement;
 	constructor() {
-		this.#introSection = document.createElement('section');
-		this.#welcomeText = document.createElement('div');
-		this.#nameText = document.createElement('div');
-		this.#identityText = document.createElement('div');
+		this.#rootContainer = document.createElement('section');
+		this.#welcomeText = document.createElement('h2');
+		this.#nameText = document.createElement('h1');
+		this.#identityText = document.createElement('h2');
 
 		this.#welcomeText.textContent = 'Kumusta! Hi! Hola! I\'m';
 		this.#nameText.textContent = 'Beaver Bryan Antipolo';
 		this.#identityText.textContent = 'A lifelong learner and full-stack developer';
 
-		this.#introSection.appendChild(this.#welcomeText);
-		this.#introSection.appendChild(this.#nameText);
-		this.#introSection.appendChild(this.#identityText);
+		this.#rootContainer.appendChild(this.#welcomeText);
+		this.#rootContainer.appendChild(this.#nameText);
+		this.#rootContainer.appendChild(this.#identityText);
 
 		// Add classnames to apply styles
-		this.#introSection.classList.add(
+		this.#rootContainer.classList.add(
 			'min-h-screen',
 			'flex',
 			'flex-col',
@@ -57,10 +57,9 @@ export default class Intro {
 			'md:text-2xl',
 			'lg:text-3xl'
 		);
-
 	}
 
-	public getElement(): HTMLElement {
-		return this.#introSection;
+	public getRootElement(): HTMLElement {
+		return this.#rootContainer;
 	}
 }

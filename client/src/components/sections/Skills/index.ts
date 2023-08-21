@@ -31,25 +31,25 @@ const skillLevels: { key: keyof typeof SkillLevels, value: SkillLevelsValues }[]
 		value: SkillLevels[key as unknown as keyof typeof SkillLevels] as SkillLevelsValues
 	}))
 
-export default class Skills {
-	#portfolioSection: HTMLElement;
-	#sectionName: HTMLHeadingElement;
-	#container: HTMLDivElement;
+export default class SkillsSection {
+	#rootContainer: HTMLElement;
+	#sectionHeading: HTMLHeadingElement;
+	#contentContainer: HTMLDivElement;
 	#skillCategories: HTMLDivElement;
 
 	constructor({ skills }: SkillsInstanceArgs) {
-		this.#portfolioSection = document.createElement('section');
-		this.#sectionName = document.createElement('h1');
-		this.#sectionName.textContent = 'Skills';
-		this.#container = document.createElement('div');
+		this.#rootContainer = document.createElement('section');
+		this.#sectionHeading = document.createElement('h1');
+		this.#sectionHeading.textContent = 'Skills';
+		this.#contentContainer = document.createElement('div');
 		this.#skillCategories = document.createElement('div');
 
-		this.#portfolioSection.appendChild(this.#sectionName);
-		this.#portfolioSection.appendChild(this.#container);
-		this.#container.appendChild(
+		this.#rootContainer.appendChild(this.#sectionHeading);
+		this.#rootContainer.appendChild(this.#contentContainer);
+		this.#contentContainer.appendChild(
 			this.createSkillLevelLegend(skillLevels.map(sl => sl.value))
 		)
-		this.#container.appendChild(this.#skillCategories);
+		this.#contentContainer.appendChild(this.#skillCategories);
 
 		for (const skillCategory of skillCategories) {
 			const filteredSkills = skills.filter(skill => {
@@ -65,9 +65,9 @@ export default class Skills {
 			this.#skillCategories.appendChild(this.createSkillCategory(filteredSkills));
 		}
 
-		this.#portfolioSection.classList.add('portfolio-section');
-		this.#sectionName.classList.add('section-text-heading');
-		this.#container.classList.add(
+		this.#rootContainer.classList.add('portfolio-section');
+		this.#sectionHeading.classList.add('section-text-heading');
+		this.#contentContainer.classList.add(
 			'font-sans',
 			'flex',
 			'flex-col',
@@ -164,7 +164,7 @@ export default class Skills {
 			const borderColor = `border-${color}`;
 			const bgColor = `bg-${color}`;
 
-			// Skill elements are to apply their own tier-esque minimal styling based on experience level
+			// Skill elements are to apply their own tier-esque minimal styles based on experience level
 			const skillLevelTierStylings = colorIndex === skillLevels.length - 1
 				? [borderColor, bgColor]
 				: [borderColor];
@@ -194,7 +194,7 @@ export default class Skills {
 		return skillCategoryContainer;
 	}
 
-	public getElement(): HTMLElement {
-		return this.#portfolioSection;
+	public getRootElement(): HTMLElement {
+		return this.#rootContainer;
 	}
 }

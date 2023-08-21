@@ -17,7 +17,7 @@ const educationCategoryHeaderTextStyles = [
 	'text-center'
 ]
 
-export default class EducationalBackgrounds {
+export default class EducationSection {
 	#portfolioSection: HTMLElement;
 	#sectionName: HTMLHeadingElement;
 	#container: HTMLDivElement;

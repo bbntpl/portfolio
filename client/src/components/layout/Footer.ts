@@ -1,9 +1,9 @@
 export default class Footer {
-	#container: HTMLDivElement
+	#rootContainer: HTMLElement;
 	#footerLink: HTMLAnchorElement;
 	#currentYear: Number;
 	constructor({ githubLink }: { githubLink: string }) {
-		this.#container = document.createElement('div');
+		this.#rootContainer = document.createElement('footer');
 		this.#footerLink = document.createElement('a');
 		this.#currentYear = new Date().getFullYear();
 
@@ -12,10 +12,10 @@ export default class Footer {
 		this.#footerLink.href = githubLink;
 		this.#footerLink.textContent = `${copyrightSymbol} Beaver Bryan Antipolo ${this.#currentYear}`;
 
-		this.#container.appendChild(this.#footerLink);
+		this.#rootContainer.appendChild(this.#footerLink);
 
 		// Add classes to apply styles
-		this.#container.classList.add(
+		this.#rootContainer.classList.add(
 			'flex',
 			'justify-center',
 			'bottom-0',
@@ -34,7 +34,7 @@ export default class Footer {
 		)
 	}
 
-	public getElement(): HTMLDivElement {
-		return this.#container;
+	public getRootElement(): HTMLElement {
+		return this.#rootContainer;
 	}
 }

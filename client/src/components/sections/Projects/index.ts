@@ -4,19 +4,19 @@ type ProjectsInstanceArgs = {
 	projects: Array<Project>
 }
 
-export default class Projects {
-	#portfolioSection: HTMLElement;
-	#sectionName: HTMLHeadingElement;
-	#container: HTMLDivElement;
+export default class ProjectsSection {
+	#rootContainer: HTMLElement;
+	#sectionHeading: HTMLHeadingElement;
+	#contentContainer: HTMLDivElement;
 	#projectGrids: HTMLDivElement;
 	#secondaryProjectListLinkWrapper: HTMLDivElement;
 	#secondaryProjectListLink: HTMLAnchorElement;
 
 	constructor({ projects }: ProjectsInstanceArgs) {
-		this.#portfolioSection = document.createElement('section');
-		this.#sectionName = document.createElement('h1');
-		this.#sectionName.textContent = 'Projects';
-		this.#container = document.createElement('div');
+		this.#rootContainer = document.createElement('section');
+		this.#sectionHeading = document.createElement('h1');
+		this.#sectionHeading.textContent = 'Projects';
+		this.#contentContainer = document.createElement('div');
 		this.#projectGrids = document.createElement('div');
 		this.#secondaryProjectListLinkWrapper = document.createElement('div');
 		this.#secondaryProjectListLink = document.createElement('a');
@@ -24,19 +24,19 @@ export default class Projects {
 		this.#secondaryProjectListLink.href = 'https://github.com/stars/bvrbryn445/lists/my-webdev-projects-2';
 		this.#secondaryProjectListLink.target = '_blank';
 
-		this.#portfolioSection.appendChild(this.#sectionName);
-		this.#portfolioSection.appendChild(this.#container);
-		this.#container.appendChild(this.#projectGrids);
-		this.#container.appendChild(this.#secondaryProjectListLinkWrapper);
+		this.#rootContainer.appendChild(this.#sectionHeading);
+		this.#rootContainer.appendChild(this.#contentContainer);
+		this.#contentContainer.appendChild(this.#projectGrids);
+		this.#contentContainer.appendChild(this.#secondaryProjectListLinkWrapper);
 		this.#secondaryProjectListLinkWrapper.appendChild(this.#secondaryProjectListLink);
 
 		for (const project of projects) {
 			this.#projectGrids.appendChild(this.createProjectGridItem(project))
 		}
 
-		this.#portfolioSection.classList.add('portfolio-section');
-		this.#sectionName.classList.add('section-text-heading');
-		this.#container.classList.add(
+		this.#rootContainer.classList.add('portfolio-section');
+		this.#sectionHeading.classList.add('section-text-heading');
+		this.#contentContainer.classList.add(
 			'flex',
 			'flex-col',
 			'items-center',
@@ -102,10 +102,10 @@ export default class Projects {
 
 		const absoluteWrapperStyles = [
 			'absolute',
-			'w-full',
 			'h-full',
 			'top-0',
 			'left-0',
+			'bg-transparent'
 		]
 		rootEl.classList.add(
 			'relative',
@@ -115,19 +115,21 @@ export default class Projects {
 		bgImage.classList.add(
 			...absoluteWrapperStyles,
 			'z-15',
-			'bg-bottom'
+			'bg-auto',
+			'bg-center',
+			'scale-y-120'
 		);
 		projectInfoWrapper.classList.add(
 			...absoluteWrapperStyles,
 			'z-20',
+			'w-full',
 			'flex',
 			'flex-col',
 			'justify-start',
 			'items-center',
-			'bg-midnight',
+			'bg-bluemine-source',
 			'opacity-20',
-			'bg-blend-lighten',
-			'hover:bg-blend-darken'
+			'hover:opacity-50',
 		);
 		projectLinks.classList.add(
 			'flex',
@@ -140,7 +142,7 @@ export default class Projects {
 		return rootEl;
 	}
 
-	public getElement(): HTMLElement {
-		return this.#portfolioSection;
+	public getRootElement(): HTMLElement {
+		return this.#rootContainer;
 	}
 }

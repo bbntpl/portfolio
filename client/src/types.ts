@@ -1,5 +1,5 @@
 import { Profile } from './components/sections/About/index.types';
-import { Education } from './components/sections/EducationalBackgrounds/index.types';
+import { Education } from './components/sections/Education/index.types';
 import { Project } from './components/sections/Projects/index.types';
 import { Skillset } from './components/sections/Skills/index.types';
 

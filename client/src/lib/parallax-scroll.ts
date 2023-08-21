@@ -4,7 +4,7 @@ interface ParallaxScrollConstructorArgs {
 	contentElement: HTMLDivElement;
 }
 
-export default class ParallaxScroll {
+export default class ParallaxScrollElement {
 	#parallaxContainer: HTMLDivElement;
 	#parallaxBackground: HTMLDivElement;
 
@@ -28,7 +28,6 @@ export default class ParallaxScroll {
 			'parallax-container',
 			'min-h-screen'
 		);
-
 		this.#parallaxBackground.classList.add(
 			'absolute',
 			'top-0',
@@ -46,14 +45,14 @@ export default class ParallaxScroll {
 		// Apply parallax scroll effect
 		window.addEventListener('scroll', () => {
 			const scrolltotop = document.scrollingElement.scrollTop;
-			const xvalue = 'center';
+			const xValue = 'center';
 			const factor = 0.2;
-			const yvalue = scrolltotop * factor;
-			this.#parallaxBackground.style.backgroundPosition = `${xvalue} ${yvalue}px`;
+			const yValue = scrolltotop * factor;
+			this.#parallaxBackground.style.backgroundPosition = `${xValue} ${yValue}px`;
 		});
 	}
 
-	public getElement(): HTMLDivElement {
+	public getRootElement(): HTMLDivElement {
 		return this.#parallaxContainer;
 	}
 }

@@ -1,12 +1,12 @@
 import { Profile } from './index.types';
 import getIcon from '../../icons';
 
-export default class About {
-	#portfolioSection: HTMLElement;
-	#sectionName: HTMLHeadingElement;
-	#container: HTMLDivElement;
-	#leftSideContent: HTMLDivElement;
-	#rightSideContent: HTMLDivElement;
+export default class AboutSection {
+	#rootContainer: HTMLElement;
+	#sectionHeading: HTMLHeadingElement;
+	#contentContainer: HTMLDivElement;
+	#imageAndSocialsContent: HTMLDivElement;
+	#aboutInfoContent: HTMLDivElement;
 
 	#imageWrapper: HTMLDivElement;
 	#image: HTMLImageElement;
@@ -20,12 +20,12 @@ export default class About {
 		socialMediaLinks,
 		randomFacts
 	}: Profile) {
-		this.#portfolioSection = document.createElement('section');
-		this.#sectionName = document.createElement('h1');
-		this.#sectionName.textContent = 'About';
-		this.#container = document.createElement('div');
-		this.#leftSideContent = document.createElement('div');
-		this.#rightSideContent = document.createElement('div');
+		this.#rootContainer = document.createElement('section');
+		this.#sectionHeading = document.createElement('h1');
+		this.#sectionHeading.textContent = 'About';
+		this.#contentContainer = document.createElement('div');
+		this.#imageAndSocialsContent = document.createElement('div');
+		this.#aboutInfoContent = document.createElement('div');
 
 		this.#imageWrapper = document.createElement('div');
 		this.#image = new Image();
@@ -34,17 +34,18 @@ export default class About {
 		this.#randomFactsList = document.createElement('dl');
 		this.#socialLinksList = document.createElement('ul');
 
-		this.#portfolioSection.appendChild(this.#sectionName);
-		this.#portfolioSection.appendChild(this.#container);
-		this.#container.appendChild(this.#leftSideContent);
-		this.#container.appendChild(this.#rightSideContent);
-		this.#leftSideContent.appendChild(this.#imageWrapper);
+		this.#rootContainer.appendChild(this.#sectionHeading);
+		this.#rootContainer.appendChild(this.#contentContainer);
+		this.#contentContainer.appendChild(this.#imageAndSocialsContent);
+		this.#contentContainer.appendChild(this.#aboutInfoContent);
+		this.#imageAndSocialsContent.appendChild(this.#imageWrapper);
+		this.#imageAndSocialsContent.appendChild(this.#socialLinksList);
 		this.#imageWrapper.appendChild(this.#image);
-		this.#leftSideContent.appendChild(this.#socialLinksList);
 
 		for (const socialMedia of socialMediaLinks) {
 			const socialLink = document.createElement('a');
 			const socialIcon = new Image();
+
 			socialIcon.setAttribute('width', '32px');
 			socialIcon.setAttribute('height', '32px');
 			socialLink.href = socialMedia.url;
@@ -55,7 +56,7 @@ export default class About {
 			this.#socialLinksList.appendChild(socialLink);
 		}
 
-		// Add about paragraphs
+		// Add about me paragraphs
 		for (const paragraph of about) {
 			const paragraphElement = document.createElement('p');
 			paragraphElement.classList.add(
@@ -63,11 +64,11 @@ export default class About {
 			);
 			paragraphElement.textContent = paragraph;
 
-			this.#rightSideContent.appendChild(paragraphElement);
+			this.#aboutInfoContent.appendChild(paragraphElement);
 		}
 
 		// Add extra facts about me
-		this.#rightSideContent.appendChild(this.#randomFactsList);
+		this.#aboutInfoContent.appendChild(this.#randomFactsList);
 		if (randomFacts !== null && randomFacts?.length > 0) {
 			for (const fact of randomFacts) {
 				const factContainer = document.createElement('div');
@@ -86,11 +87,11 @@ export default class About {
 		// Add classnames to elements to apply tailwind css styles
 		this.#image.style.minWidth = '100%';
 		this.#image.style.maxWidth = '350px';
-		this.#portfolioSection.classList.add('portfolio-section');
-		this.#sectionName.classList.add('section-text-heading');
-		this.#container.classList.add(
+		this.#rootContainer.classList.add('portfolio-section');
+		this.#sectionHeading.classList.add('section-text-heading');
+		this.#contentContainer.classList.add(
 			'flex',
-			'gap-4',
+			'gap-6',
 			'md:gap-8',
 			'lg:gap-10',
 			'xl:gap-14',
@@ -105,7 +106,7 @@ export default class About {
 			'lg:items-start',
 			'xl:items-start',
 		)
-		this.#leftSideContent.classList.add(
+		this.#imageAndSocialsContent.classList.add(
 			'flex',
 			'flex-col',
 			'lg:flex-row',
@@ -130,10 +131,9 @@ export default class About {
 			'min-w-8',
 			'w-max'
 		)
-
 	}
 
-	public getElement(): HTMLElement {
-		return this.#portfolioSection;
+	public getRootElement(): HTMLElement {
+		return this.#rootContainer;
 	}
 }

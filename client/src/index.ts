@@ -12,76 +12,76 @@ import Intro from './components/sections/Intro';
 import About from './components/sections/About';
 import Projects from './components/sections/Projects';
 import Skills from './components/sections/Skills';
-import EducationalBackgrounds from './components/sections/EducationalBackgrounds';
+import EducationalBackgrounds from './components/sections/Education';
 
 class App {
-	data: Portfolio;
-	containerEl: HTMLDivElement;
-	root: HTMLDivElement;
-	header: Header;
-	footer: Footer;
-	main: HTMLElement;
-	progressIndicator: ProgressIndicator;
+	#data: Portfolio;
+	#rootContainer: HTMLDivElement;
+	#layoutContainer: HTMLDivElement;
+	#header: Header;
+	#footer: Footer;
+	#sectionContainer: HTMLElement;
+	#progressIndicator: ProgressIndicator;
 
-	introSection: Intro;
-	aboutSection: About;
-	skillsSection: Skills;
-	educationSection: EducationalBackgrounds;
-	projectsSection: Projects
+	#introSection: Intro;
+	#aboutSection: About;
+	#skillsSection: Skills;
+	#educationSection: EducationalBackgrounds;
+	#projectsSection: Projects
 
 	constructor(portfolioData: Portfolio) {
-		this.data = portfolioData;
+		this.#data = portfolioData;
 
-		this.root = document.createElement('div');
+		this.#rootContainer = document.createElement('div');
 
-		this.containerEl = document.createElement('div');
-		this.containerEl.className = 'main-content';
+		this.#layoutContainer = document.createElement('div');
+		this.#layoutContainer.className = 'main-content';
 
 		// Create instances of main layout components
-		this.main = document.createElement('main');
-		this.header = new Header({ scrollableEl: this.main });
-		this.footer = new Footer({
-			githubLink: this.data.profile.socialMediaLinks.find(s => s.platform === 'Github').url
+		this.#sectionContainer = document.createElement('main');
+		this.#header = new Header();
+		this.#footer = new Footer({
+			githubLink: this.#data.profile.socialMediaLinks.find(s => s.platform === 'Github').url
 		});
-		this.progressIndicator = new ProgressIndicator();
+		this.#progressIndicator = new ProgressIndicator();
 
 		// Append main layout components
-		this.containerEl.appendChild(this.header.getElement());
-		this.containerEl.appendChild(this.progressIndicator.getElement());
-		this.containerEl.appendChild(this.main);
-		this.containerEl.appendChild(this.footer.getElement());
+		this.#layoutContainer.appendChild(this.#header.getRootElement());
+		this.#layoutContainer.appendChild(this.#progressIndicator.getElement());
+		this.#layoutContainer.appendChild(this.#sectionContainer);
+		this.#layoutContainer.appendChild(this.#footer.getRootElement());
 
-		// Create and append portfolio sections as a child to main element
-		this.introSection = new Intro();
-		this.aboutSection = new About(this.data.profile);
-		this.skillsSection = new Skills({ skills: this.data.skillset });
-		this.projectsSection = new Projects({ projects: this.data.projects });
-		this.educationSection = new EducationalBackgrounds({
-			educationalBackgrounds: this.data.educationalBackgrounds
+		// Create and append portfolio sections as children of section container
+		this.#introSection = new Intro();
+		this.#aboutSection = new About(this.#data.profile);
+		this.#skillsSection = new Skills({ skills: this.#data.skillset });
+		this.#projectsSection = new Projects({ projects: this.#data.projects });
+		this.#educationSection = new EducationalBackgrounds({
+			educationalBackgrounds: this.#data.educationalBackgrounds
 		});
 
-		this.main.appendChild(this.introSection.getElement());
-		this.main.appendChild(this.aboutSection.getElement());
-		this.main.appendChild(this.skillsSection.getElement());
-		this.main.appendChild(this.projectsSection.getElement());
-		this.main.appendChild(this.educationSection.getElement());
+		this.#sectionContainer.appendChild(this.#introSection.getRootElement());
+		this.#sectionContainer.appendChild(this.#aboutSection.getRootElement());
+		this.#sectionContainer.appendChild(this.#skillsSection.getRootElement());
+		this.#sectionContainer.appendChild(this.#projectsSection.getRootElement());
+		this.#sectionContainer.appendChild(this.#educationSection.getElement());
 
 		const parallaxElement = new ParallaxScroll({
 			containerBgColor: 'bg-midnight',
-			contentElement: this.containerEl,
+			contentElement: this.#layoutContainer,
 			backgroundUrl: ParallaxBgImage
 		});
-		this.root.appendChild(parallaxElement.getElement());
+		this.#rootContainer.appendChild(parallaxElement.getRootElement());
 
 		// Style the layout components including its parent elements
-		this.containerEl.classList.add(
+		this.#layoutContainer.classList.add(
 			'flex',
 			'flex-col',
 			'min-h-screen',
 			'h-max',
 			'overflow-hidden',
 		)
-		this.main.classList.add(
+		this.#sectionContainer.classList.add(
 			'min-h-screen',
 			'h-max',
 			'max-w-screen-2xl',
@@ -97,12 +97,16 @@ class App {
 			'lg:px-36',
 			'lg:pb-48',
 			'z-10',
-			'mx-auto'
-		)
+			'mx-auto',
+		);
 	}
 
-	public getElement(): HTMLDivElement {
-		return this.root;
+	public getRootElement(): HTMLDivElement {
+		return this.#rootContainer;
+	}
+
+	public triggerInitialTransitions() {
+		this.#header.triggerTransition();
 	}
 }
 
@@ -120,8 +124,8 @@ const dataRepo = DataRepository.getInstance();
 
 		// Create instance of app and pass the data
 		const app = new App(dataRepo.getData());
-		document.body.appendChild(app.getElement());
-
+		document.body.appendChild(app.getRootElement());
+		app.triggerInitialTransitions();
 	} catch (error) {
 		console.log(error);
 		// If fetching process failed, display error screen
