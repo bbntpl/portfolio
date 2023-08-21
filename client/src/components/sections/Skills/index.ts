@@ -40,6 +40,7 @@ export default class SkillsSection {
 	constructor({ skills }: SkillsInstanceArgs) {
 		this.#rootContainer = document.createElement('section');
 		this.#sectionHeading = document.createElement('h1');
+		this.#sectionHeading.id = 'skills';
 		this.#sectionHeading.textContent = 'Skills';
 		this.#contentContainer = document.createElement('div');
 		this.#skillCategories = document.createElement('div');
@@ -66,7 +67,10 @@ export default class SkillsSection {
 		}
 
 		this.#rootContainer.classList.add('portfolio-section');
-		this.#sectionHeading.classList.add('section-text-heading');
+		this.#sectionHeading.classList.add(
+			'section-text-heading',
+			'viewport-element-transition'
+		);
 		this.#contentContainer.classList.add(
 			'font-sans',
 			'flex',
@@ -102,7 +106,8 @@ export default class SkillsSection {
 			legendItem.classList.add(
 				'inline-flex',
 				'items-center',
-				'gap-3'
+				'gap-3',
+				'viewport-element-transition'
 			)
 			colorLevel.classList.add(
 				bgColor,
@@ -137,7 +142,8 @@ export default class SkillsSection {
 		skillCategoryText.classList.add(
 			'mb-4',
 			'text-bluemine-200',
-			'text-xl'
+			'text-xl',
+			'viewport-element-transition'
 		)
 		skillList.classList.add(
 			'flex',
@@ -180,6 +186,7 @@ export default class SkillsSection {
 				...skillLevelTierStylings,
 				'border-2',
 				'rounded-md',
+				'viewport-element-transition'
 			)
 
 			skillText.classList.add(

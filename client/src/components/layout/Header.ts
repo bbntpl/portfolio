@@ -40,6 +40,7 @@ export default class Header {
 		this.#logoObject.classList.add(
 			'select-none',
 			'pointer-events-auto',
+			'viewport-element-transition'
 		)
 		this.#rootContainer.classList.add(
 			'flex',
@@ -55,9 +56,6 @@ export default class Header {
 			'z-20',
 			'bg-midnight',
 			'bg-opacity-70',
-			'translate-transform',
-			'duration-300',
-			'ease-in-out'
 		)
 		this.#sectionList = this.createMenuList([
 			{ name: 'about' },
@@ -71,13 +69,14 @@ export default class Header {
 		this.#rootContainer.appendChild(this.#logoWrapper);
 		this.#rootContainer.appendChild(this.#sectionList);
 
-		// Add events
 		window.addEventListener('scroll', () => {
 			const { currentScrollY, previousVisualState } = this.#props
+			// When the viewer scrolls down, it must disappear with transition
 			if (currentScrollY < window.scrollY && previousVisualState !== 'hidden') {
 				this.undisplayHeader({ headerEl: this.#rootContainer });
 				this.#props.previousVisualState = 'hidden';
 			} else if (currentScrollY > window.scrollY && previousVisualState !== 'displayed') {
+				// When the viewer scrolls up, it must reappear with transition
 				this.displayHeader({ headerEl: this.#rootContainer });
 				this.#props.previousVisualState = 'displayed';
 			}
@@ -85,8 +84,6 @@ export default class Header {
 			this.#props.currentScrollY = window.scrollY;
 		});
 	}
-
-
 
 	private createMenuList(items: Array<HeaderListArgs>): HTMLUListElement {
 		const sectionSelection = document.createElement('ul');
@@ -113,9 +110,8 @@ export default class Header {
 				'hover:text-downy-100',
 				'px-2',
 				'py-1',
-				'transition',
-				'duration-300',
-				'hover:cursor-pointer'
+				'hover:cursor-pointer',
+				'viewport-element-transition'
 			);
 
 			listItem.appendChild(sectionLink);
@@ -133,13 +129,6 @@ export default class Header {
 	private displayHeader({ headerEl }: { headerEl: HTMLDivElement }) {
 		headerEl.classList.remove('-translate-y-full', 'opacity-0');
 		headerEl.classList.add('translate-y-0', 'opacity-100');
-	}
-
-	public triggerTransition() {
-		this.undisplayHeader({ headerEl: this.#rootContainer });
-		setTimeout(() => {
-			this.displayHeader({ headerEl: this.#rootContainer });
-		}, 100);
 	}
 
 	public getRootElement(): HTMLDivElement {

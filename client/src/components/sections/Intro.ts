@@ -25,7 +25,7 @@ export default class IntroSection {
 			'justify-center',
 			'pb-24',
 			'select-none',
-			'font-intro'
+			'font-intro',
 		)
 		this.#welcomeText.classList.add(
 			'text-lg',
@@ -36,6 +36,7 @@ export default class IntroSection {
 			'sm:text-lg',
 			'md:text-2xl',
 			'md:text-3xl',
+			'viewport-element-transition'
 		);
 		this.#nameText.classList.add('text-2xl',
 			'font-semibold',
@@ -47,7 +48,8 @@ export default class IntroSection {
 			'md:text-5xl',
 			'lg:text-6xl',
 			'xl:text-6xl',
-			'2xl:text-6xl'
+			'2xl:text-6xl',
+			'viewport-element-transition'
 		);
 		this.#identityText.classList.add(
 			'text-base',
@@ -55,7 +57,8 @@ export default class IntroSection {
 			'text-bluemine-300',
 			'sm:text-xl',
 			'md:text-2xl',
-			'lg:text-3xl'
+			'lg:text-3xl',
+			'viewport-element-transition'
 		);
 	}
 

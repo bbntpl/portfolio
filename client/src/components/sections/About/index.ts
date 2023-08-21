@@ -22,6 +22,7 @@ export default class AboutSection {
 	}: Profile) {
 		this.#rootContainer = document.createElement('section');
 		this.#sectionHeading = document.createElement('h1');
+		this.#sectionHeading.id = 'about'
 		this.#sectionHeading.textContent = 'About';
 		this.#contentContainer = document.createElement('div');
 		this.#imageAndSocialsContent = document.createElement('div');
@@ -54,6 +55,8 @@ export default class AboutSection {
 
 			socialLink.appendChild(socialIcon);
 			this.#socialLinksList.appendChild(socialLink);
+
+			socialLink.classList.add('viewport-element-transition');
 		}
 
 		// Add about me paragraphs
@@ -65,6 +68,8 @@ export default class AboutSection {
 			paragraphElement.textContent = paragraph;
 
 			this.#aboutInfoContent.appendChild(paragraphElement);
+
+			paragraphElement.classList.add('viewport-element-transition');
 		}
 
 		// Add extra facts about me
@@ -80,15 +85,25 @@ export default class AboutSection {
 				factContainer.appendChild(descEl);
 				this.#randomFactsList.appendChild(factContainer);
 
-				factContainer.classList.add('flex', 'flex-row', 'gap-2');
+				factContainer.classList.add(
+					'flex',
+					'flex-row',
+					'gap-2',
+					'viewort-element-transition'
+				);
 			}
 		}
 
 		// Add classnames to elements to apply tailwind css styles
-		this.#image.style.minWidth = '100%';
-		this.#image.style.maxWidth = '350px';
+		this.#image.classList.add(
+			'min-w-full',
+			'max-w-sm'
+		)
 		this.#rootContainer.classList.add('portfolio-section');
-		this.#sectionHeading.classList.add('section-text-heading');
+		this.#sectionHeading.classList.add(
+			'section-text-heading',
+			'viewport-element-transition'
+		);
 		this.#contentContainer.classList.add(
 			'flex',
 			'gap-6',
@@ -130,6 +145,9 @@ export default class AboutSection {
 			'gap-4',
 			'min-w-8',
 			'w-max'
+		)
+		this.#imageWrapper.classList.add(
+			'viewport-element-transition'
 		)
 	}
 

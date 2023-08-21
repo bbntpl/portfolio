@@ -30,7 +30,8 @@ export default class Footer {
 			'transition',
 			'duration-300',
 			'hover:text-downy-100',
-			'hover:cursor-pointer'
+			'hover:cursor-pointer',
+			'viewport-element-transition'
 		)
 	}
 

@@ -26,15 +26,19 @@
 }
 
 @layer components {
-  .transition-fade {
-    @apply opacity-0 transform -translate-y-20 transition-opacity transition-transform ease-in-out duration-200;
-  }
   .section-text-heading {
     @apply font-bold text-2xl text-bluemine-100 uppercase pb-6;
   }
   .portfolio-section {
     @apply flex flex-col py-20 md:py-32 lg:py-40 xl:py-40 2xl:py-40;
   }
+  .viewport-element-transition {
+    @apply duration-300 ease-in-out -translate-y-10 opacity-0;
+  } 
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 svg text {

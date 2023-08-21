@@ -14,24 +14,26 @@ const educationCategoryHeaderTextStyles = [
 	'mt-10',
 	'mb-4',
 	'text-xl',
-	'text-center'
+	'text-center',
+	'viewport-element-transition'
 ]
 
 export default class EducationSection {
-	#portfolioSection: HTMLElement;
-	#sectionName: HTMLHeadingElement;
-	#container: HTMLDivElement;
+	#rootContainer: HTMLElement;
+	#sectionHeading: HTMLHeadingElement;
+	#contentContainer: HTMLDivElement;
 
 	#hasUniversityDegree: boolean;
 	#hasFinishedSelfDirectedCourse: boolean;
 	constructor({ educationalBackgrounds }: EducationInstanceArgs) {
-		this.#portfolioSection = document.createElement('section');
-		this.#sectionName = document.createElement('h1');
-		this.#sectionName.textContent = 'Educational Background';
-		this.#container = document.createElement('div');
+		this.#rootContainer = document.createElement('section');
+		this.#sectionHeading = document.createElement('h1');
+		this.#sectionHeading.id = 'education'
+		this.#sectionHeading.textContent = 'Educational Background';
+		this.#contentContainer = document.createElement('div');
 
-		this.#portfolioSection.appendChild(this.#sectionName);
-		this.#portfolioSection.appendChild(this.#container);
+		this.#rootContainer.appendChild(this.#sectionHeading);
+		this.#rootContainer.appendChild(this.#contentContainer);
 
 		this.#hasUniversityDegree = false;
 		this.#hasFinishedSelfDirectedCourse = false;
@@ -40,25 +42,28 @@ export default class EducationSection {
 			if (isUniversityDegree(education) && !this.#hasUniversityDegree) {
 				const universityHeaderText = document.createElement('h2');
 				universityHeaderText.textContent = 'Universities/Colleges';
-				this.#container.appendChild(universityHeaderText);
+				this.#contentContainer.appendChild(universityHeaderText);
 
 				universityHeaderText.classList.add(...educationCategoryHeaderTextStyles)
 				this.#hasUniversityDegree = true;
 			} else if (isSelfDirectedCourse(education) && !this.#hasFinishedSelfDirectedCourse) {
 				const selfDirectedCourseHeaderText = document.createElement('h2');
 				selfDirectedCourseHeaderText.textContent = 'Self-Directed Courses';
-				this.#container.appendChild(selfDirectedCourseHeaderText);
+				this.#contentContainer.appendChild(selfDirectedCourseHeaderText);
 
 				selfDirectedCourseHeaderText.classList.add(...educationCategoryHeaderTextStyles);
 				this.#hasFinishedSelfDirectedCourse = true;
 			}
 
-			this.#container.appendChild(this.createEducationExpEl(education))
+			this.#contentContainer.appendChild(this.createEducationExpEl(education))
 		}
 
-		this.#portfolioSection.classList.add('portfolio-section');
-		this.#sectionName.classList.add('section-text-heading');
-		this.#container.classList.add(
+		this.#rootContainer.classList.add('portfolio-section');
+		this.#sectionHeading.classList.add(
+			'section-text-heading',
+			'viewport-element-transition'
+		);
+		this.#contentContainer.classList.add(
 			'flex',
 			'flex-col',
 			'items-center'
@@ -76,7 +81,6 @@ export default class EducationSection {
 		const subjectEl = document.createElement('h4');
 		const descriptionEl = document.createElement('p')
 
-
 		educationTitleEl.textContent = name;
 		dateEl.textContent = `${startDate} ${!endDate ? '' : '- ' + endDate}`;
 		subjectEl.textContent = fieldOfStudy;
@@ -86,6 +90,7 @@ export default class EducationSection {
 			educationTitleEl.appendChild(degreeEl);
 			degreeEl.textContent = ` (${educationalBackground.degree})`;
 		}
+
 		educationExpEl.appendChild(dateEl);
 		educationExpEl.appendChild(educationTitleEl);
 		educationExpEl.appendChild(secondaryContent);
@@ -105,7 +110,8 @@ export default class EducationSection {
 			'pt-2',
 			'pb-4',
 			'max-w-5xl',
-			'w-full'
+			'w-full',
+			'viewport-element-transition'
 		);
 		educationTitleEl.classList.add(
 			'inline-flex',
@@ -150,7 +156,7 @@ export default class EducationSection {
 		return educationExpEl;
 	}
 
-	public getElement(): HTMLElement {
-		return this.#portfolioSection;
+	public getRootElement(): HTMLElement {
+		return this.#rootContainer;
 	}
 }

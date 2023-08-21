@@ -15,6 +15,7 @@ export default class ProjectsSection {
 	constructor({ projects }: ProjectsInstanceArgs) {
 		this.#rootContainer = document.createElement('section');
 		this.#sectionHeading = document.createElement('h1');
+		this.#sectionHeading.id = 'projects';
 		this.#sectionHeading.textContent = 'Projects';
 		this.#contentContainer = document.createElement('div');
 		this.#projectGrids = document.createElement('div');
@@ -35,7 +36,10 @@ export default class ProjectsSection {
 		}
 
 		this.#rootContainer.classList.add('portfolio-section');
-		this.#sectionHeading.classList.add('section-text-heading');
+		this.#sectionHeading.classList.add(
+			'section-text-heading',
+			'viewport-element-transition'
+		);
 		this.#contentContainer.classList.add(
 			'flex',
 			'flex-col',
@@ -56,6 +60,7 @@ export default class ProjectsSection {
 			'text-midnight',
 			'hover:bg-bluemine-200',
 			'py-2',
+			'viewport-element-transition'
 		)
 		this.#secondaryProjectListLink.classList.add(
 			'px-4',
@@ -110,7 +115,8 @@ export default class ProjectsSection {
 		rootEl.classList.add(
 			'relative',
 			'w-96',
-			'h-96'
+			'h-96',
+			'viewport-element-transition'
 		);
 		bgImage.classList.add(
 			...absoluteWrapperStyles,

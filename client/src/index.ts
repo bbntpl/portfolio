@@ -13,6 +13,7 @@ import About from './components/sections/About';
 import Projects from './components/sections/Projects';
 import Skills from './components/sections/Skills';
 import EducationalBackgrounds from './components/sections/Education';
+import { elementsInViewportTransitions } from './lib/viewport-elements-transitions';
 
 class App {
 	#data: Portfolio;
@@ -64,7 +65,7 @@ class App {
 		this.#sectionContainer.appendChild(this.#aboutSection.getRootElement());
 		this.#sectionContainer.appendChild(this.#skillsSection.getRootElement());
 		this.#sectionContainer.appendChild(this.#projectsSection.getRootElement());
-		this.#sectionContainer.appendChild(this.#educationSection.getElement());
+		this.#sectionContainer.appendChild(this.#educationSection.getRootElement());
 
 		const parallaxElement = new ParallaxScroll({
 			containerBgColor: 'bg-midnight',
@@ -104,10 +105,6 @@ class App {
 	public getRootElement(): HTMLDivElement {
 		return this.#rootContainer;
 	}
-
-	public triggerInitialTransitions() {
-		this.#header.triggerTransition();
-	}
 }
 
 const dataRepo = DataRepository.getInstance();
@@ -125,7 +122,12 @@ const dataRepo = DataRepository.getInstance();
 		// Create instance of app and pass the data
 		const app = new App(dataRepo.getData());
 		document.body.appendChild(app.getRootElement());
-		app.triggerInitialTransitions();
+
+		// Activate viewport elements transitions
+		elementsInViewportTransitions({
+			elementClassName: 'viewport-element-transition',
+			threshold: 0.40
+		});
 	} catch (error) {
 		console.log(error);
 		// If fetching process failed, display error screen
