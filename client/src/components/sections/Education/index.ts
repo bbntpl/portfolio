@@ -27,8 +27,8 @@ export default class EducationSection {
 	#hasFinishedSelfDirectedCourse: boolean;
 	constructor({ educationalBackgrounds }: EducationInstanceArgs) {
 		this.#rootContainer = document.createElement('section');
+		this.#rootContainer.id = 'education'
 		this.#sectionHeading = document.createElement('h1');
-		this.#sectionHeading.id = 'education'
 		this.#sectionHeading.textContent = 'Educational Background';
 		this.#contentContainer = document.createElement('div');
 

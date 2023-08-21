@@ -40,7 +40,7 @@ export default class SkillsSection {
 	constructor({ skills }: SkillsInstanceArgs) {
 		this.#rootContainer = document.createElement('section');
 		this.#sectionHeading = document.createElement('h1');
-		this.#sectionHeading.id = 'skills';
+		this.#rootContainer.id = 'skills'
 		this.#sectionHeading.textContent = 'Skills';
 		this.#contentContainer = document.createElement('div');
 		this.#skillCategories = document.createElement('div');

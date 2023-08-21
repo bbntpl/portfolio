@@ -22,7 +22,7 @@ export default class AboutSection {
 	}: Profile) {
 		this.#rootContainer = document.createElement('section');
 		this.#sectionHeading = document.createElement('h1');
-		this.#sectionHeading.id = 'about'
+		this.#rootContainer.id = 'about'
 		this.#sectionHeading.textContent = 'About';
 		this.#contentContainer = document.createElement('div');
 		this.#imageAndSocialsContent = document.createElement('div');
@@ -97,7 +97,7 @@ export default class AboutSection {
 		// Add classnames to elements to apply tailwind css styles
 		this.#image.classList.add(
 			'min-w-full',
-			'max-w-sm'
+			'max-w-sm',
 		)
 		this.#rootContainer.classList.add('portfolio-section');
 		this.#sectionHeading.classList.add(
@@ -131,7 +131,8 @@ export default class AboutSection {
 			'lg:items-start',
 			'xl:items-start',
 			'2xl:items-start',
-			'gap-4'
+			'gap-4',
+			'max-w-full'
 		)
 		this.#socialLinksList.classList.add(
 			'flex',
@@ -144,10 +145,11 @@ export default class AboutSection {
 			'2xl:flex-col',
 			'gap-4',
 			'min-w-8',
-			'w-max'
+			'w-max',
+			'max-w-full'
 		)
 		this.#imageWrapper.classList.add(
-			'viewport-element-transition'
+			'viewport-element-transition',
 		)
 	}
 

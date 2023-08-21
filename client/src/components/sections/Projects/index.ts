@@ -14,8 +14,8 @@ export default class ProjectsSection {
 
 	constructor({ projects }: ProjectsInstanceArgs) {
 		this.#rootContainer = document.createElement('section');
+		this.#rootContainer.id = 'projects';
 		this.#sectionHeading = document.createElement('h1');
-		this.#sectionHeading.id = 'projects';
 		this.#sectionHeading.textContent = 'Projects';
 		this.#contentContainer = document.createElement('div');
 		this.#projectGrids = document.createElement('div');
@@ -88,12 +88,18 @@ export default class ProjectsSection {
 		const repoLinkWrapper = document.createElement('div');
 		const websiteLinkWrapper = document.createElement('div');
 		const repoLink = document.createElement('a');
+		const websiteLink = document.createElement('a');
+		const descriptionEl = document.createElement('p');
+
 		repoLink.textContent = 'visit repo';
 		repoLink.href = project.url;
-		const websiteLink = document.createElement('a');
+		repoLink.target = '_blank';
+
 		websiteLink.textContent = 'access live demo';
-		websiteLink.href = project.url;
-		const descriptionEl = document.createElement('p');
+		websiteLink.href = project.homepage;
+		websiteLink.target = '_blank';
+
+		descriptionEl.textContent = projectDesc;
 
 		rootEl.appendChild(bgImage);
 		rootEl.appendChild(projectInfoWrapper);
@@ -134,8 +140,8 @@ export default class ProjectsSection {
 			'justify-start',
 			'items-center',
 			'bg-bluemine-source',
-			'opacity-20',
-			'hover:opacity-50',
+			'bg-opacity-40',
+			'hover:bg-opacity-80',
 		);
 		projectLinks.classList.add(
 			'flex',

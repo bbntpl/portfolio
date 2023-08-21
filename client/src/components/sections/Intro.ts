@@ -26,6 +26,7 @@ export default class IntroSection {
 			'pb-24',
 			'select-none',
 			'font-intro',
+			'intro-section'
 		)
 		this.#welcomeText.classList.add(
 			'text-lg',

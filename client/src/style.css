@@ -29,8 +29,8 @@
   .section-text-heading {
     @apply font-bold text-2xl text-bluemine-100 uppercase pb-6;
   }
-  .portfolio-section {
-    @apply flex flex-col py-20 md:py-32 lg:py-40 xl:py-40 2xl:py-40;
+  .portfolio-section, .intro-section {
+    @apply flex flex-col mb-28 sm:mb-40 md:mb-60 lg:mb-80 xl:mb-96 2xl:mb-96;
   }
   .viewport-element-transition {
     @apply duration-300 ease-in-out -translate-y-10 opacity-0;
