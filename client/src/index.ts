@@ -44,11 +44,9 @@ class App {
 		this.#footer = new Footer({
 			githubLink: this.#data.profile.socialMediaLinks.find(s => s.platform === 'Github').url
 		});
-		this.#progressIndicator = new ProgressIndicator();
 
 		// Append main layout components
 		this.#layoutContainer.appendChild(this.#header.getRootElement());
-		this.#layoutContainer.appendChild(this.#progressIndicator.getElement());
 		this.#layoutContainer.appendChild(this.#sectionContainer);
 		this.#layoutContainer.appendChild(this.#footer.getRootElement());
 
@@ -60,7 +58,17 @@ class App {
 		this.#educationSection = new EducationalBackgrounds({
 			educationalBackgrounds: this.#data.educationalBackgrounds
 		});
+		this.#progressIndicator = new ProgressIndicator({
+			sections: [
+				this.#introSection.getRootElement(),
+				this.#aboutSection.getRootElement(),
+				this.#skillsSection.getRootElement(),
+				this.#projectsSection.getRootElement(),
+				this.#educationSection.getRootElement(),
+			]
+		});
 
+		this.#layoutContainer.appendChild(this.#progressIndicator.getElement());
 		this.#sectionContainer.appendChild(this.#introSection.getRootElement());
 		this.#sectionContainer.appendChild(this.#aboutSection.getRootElement());
 		this.#sectionContainer.appendChild(this.#skillsSection.getRootElement());

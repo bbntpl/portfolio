@@ -56,6 +56,7 @@ export default class Header {
 			'z-20',
 			'bg-midnight',
 			'bg-opacity-70',
+			'transition-all'
 		)
 		this.#sectionList = this.createMenuList([
 			{ name: 'about' },
@@ -81,8 +82,22 @@ export default class Header {
 				this.#props.previousVisualState = 'displayed';
 			}
 
+			if (window.scrollY === 0) {
+				this.#rootContainer.classList.remove('bg-opacity-70', 'bg-midnight');
+				this.#rootContainer.classList.add('bg-transparent');
+			} else if (scrollY !== 0 && currentScrollY === 0) {
+				this.#rootContainer.classList.remove('bg-transparent');
+				this.#rootContainer.classList.add('bg-opacity-70', 'bg-midnight');
+			}
+
 			this.#props.currentScrollY = window.scrollY;
 		});
+
+		// Initial styles if viewport screen is at the very top
+		if (window.scrollY === 0) {
+			this.#rootContainer.classList.remove('bg-opacity-70', 'bg-midnight');
+			this.#rootContainer.classList.add('bg-transparent');
+		}
 	}
 
 	private createMenuList(items: Array<HeaderListArgs>): HTMLUListElement {
@@ -127,6 +142,7 @@ export default class Header {
 	}
 
 	private displayHeader({ headerEl }: { headerEl: HTMLDivElement }) {
+
 		headerEl.classList.remove('-translate-y-full', 'opacity-0');
 		headerEl.classList.add('translate-y-0', 'opacity-100');
 	}
