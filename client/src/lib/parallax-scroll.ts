@@ -40,15 +40,24 @@ export default class ParallaxScrollElement {
 			'parallax-bg',
 			'opacity-60'
 		);
+
 		this.#parallaxBackground.style.backgroundImage = `url('${backgroundUrl}')`;
 
 		// Apply parallax scroll effect
 		window.addEventListener('scroll', () => {
-			const scrolltotop = document.scrollingElement.scrollTop;
-			const xValue = 'center';
-			const factor = 0.2;
-			const yValue = scrolltotop * factor;
-			this.#parallaxBackground.style.backgroundPosition = `${xValue} ${yValue}px`;
+			/* Increasing the factor will make the scrolling illusion effect faster since the background 
+			 image is being moved in response to the scroll event.
+
+			 Once the background image has reached its final set of pixels, it'll repeat
+			 the process of repainting the background with the new position. This requires expensive
+			 rendering which highly impacts tperformance
+
+			 I need to find a better solution for this or minimize the impact of performance issue */
+			const factor = 0.1;
+
+			const scrollY = window.scrollY;
+			const yValue = scrollY * factor;
+			this.#parallaxBackground.style.backgroundPosition = `center ${yValue}px`;
 		});
 	}
 
