@@ -55,6 +55,7 @@ module.exports = {
 				source: '#64CCC5'
 			},
 			'frostedmint': {
+				50: '#F0F4F4',
 				600: '#577875',
 				800: '#36504E',
 				900: '#283D3B',

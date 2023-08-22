@@ -51,7 +51,7 @@ export default class ProjectsSection {
 			'flex-row',
 			'flex-wrap',
 			'my-12',
-			'justify-center'
+			'justify-center',
 		)
 		this.#secondaryProjectListLinkWrapper.classList.add(
 			'bg-bluemine-300',
@@ -84,12 +84,14 @@ export default class ProjectsSection {
 		const titleEl = document.createElement('h3');
 		titleEl.textContent = projectTitle;
 
+		const secondaryContent = document.createElement('div');
 		const projectLinks = document.createElement('div');
 		const repoLinkWrapper = document.createElement('div');
 		const websiteLinkWrapper = document.createElement('div');
 		const repoLink = document.createElement('a');
 		const websiteLink = document.createElement('a');
 		const descriptionEl = document.createElement('p');
+		const topicContainer = document.createElement('div');
 
 		repoLink.textContent = 'visit repo';
 		repoLink.href = project.url;
@@ -104,54 +106,142 @@ export default class ProjectsSection {
 		rootEl.appendChild(bgImage);
 		rootEl.appendChild(projectInfoWrapper);
 		projectInfoWrapper.appendChild(titleEl);
-		projectInfoWrapper.appendChild(projectLinks);
+		projectInfoWrapper.appendChild(secondaryContent);
+		secondaryContent.appendChild(projectLinks);
 		projectLinks.appendChild(repoLinkWrapper);
 		projectLinks.appendChild(websiteLinkWrapper);
 		repoLinkWrapper.appendChild(repoLink);
 		websiteLinkWrapper.appendChild(websiteLink);
-		projectInfoWrapper.appendChild(descriptionEl);
+		secondaryContent.appendChild(descriptionEl);
+		secondaryContent.appendChild(topicContainer);
+
+		for (const topic of project.topics) {
+			topicContainer.appendChild(this.topicTag(topic.name));
+		}
+
+		const imgPosByNaturalDimensions = bgImage.naturalHeight > bgImage.naturalWidth
+			? 'object-portrait' : 'object-cover';
 
 		const absoluteWrapperStyles = [
 			'absolute',
 			'h-full',
-			'top-0',
-			'left-0',
 			'bg-transparent'
+		];
+		const linkStyles = [
+			'underline',
+			'hover:text-frostedmint-source'
 		]
+
 		rootEl.classList.add(
-			'relative',
+			'group',
+			'flex',
+			'items-center',
+			'justify-center',
 			'w-96',
 			'h-96',
-			'viewport-element-transition'
+			'viewport-element-transition',
+			'overflow-hidden'
 		);
 		bgImage.classList.add(
 			...absoluteWrapperStyles,
 			'z-15',
-			'bg-auto',
-			'bg-center',
-			'scale-y-120'
+			imgPosByNaturalDimensions,
+			'bg-top',
+			'transition',
+			'scale-150',
+			'group-hover:scale-100',
+			'transform-all'
 		);
 		projectInfoWrapper.classList.add(
 			...absoluteWrapperStyles,
+			'group',
 			'z-20',
 			'w-full',
 			'flex',
 			'flex-col',
-			'justify-start',
+			'justify-center',
 			'items-center',
-			'bg-bluemine-source',
-			'bg-opacity-40',
-			'hover:bg-opacity-80',
+			'text-frostedmint-50',
+			'bg-midnight',
+			'hover:bg-opacity-60',
+			'bg-opacity-90',
+			'y-translate-80',
+			'px-16',
+			'py-8',
+			'gap-y-2',
+			'duration-300'
 		);
 		projectLinks.classList.add(
 			'flex',
-			'content-center'
+			'content-center',
+			'gap-x-4',
+		)
+		repoLink.classList.add(...linkStyles);
+		websiteLink.classList.add(...linkStyles);
+		titleEl.classList.add(
+			'text-2xl',
+			'text-bold',
+			'uppercase',
+			'text-center',
+			'text-frostedmint-source',
+			'group-hover:-translate-y-30',
+			'transform-all',
+		)
+		secondaryContent.classList.add(
+			'flex',
+			'flex-col',
+			'justify-center',
+			'items-center',
+			'gap-6',
+			'hidden',
+			'opacity-0',
+			'opacity-100',
+			'group-hover:flex',
+			'group-hover:opacity-100',
+			'group-hover:scale-100',
+			'transform-all',
 		)
 		descriptionEl.classList.add(
-			'text-sm'
+			'text-sm',
+			'text-justify'
+		)
+		topicContainer.classList.add(
+			'flex',
+			'flex-row',
+			'flex-wrap',
+			'gap-y-2',
+			'gap-x-4',
+			'justify-start'
 		)
 
 		return rootEl;
+	}
+
+	private topicTag(topicName: string) {
+		const tagEl = document.createElement('div');
+		const topicText = document.createElement('p');
+		topicText.textContent = topicName;
+
+		tagEl.appendChild(topicText);
+
+		tagEl.classList.add(
+			'px-2',
+			'py-1',
+			'border-frostedmint-source',
+			'rounded-lg',
+			'bg-transparent',
+			'lowercase',
+			'border-2',
+			'p-4',
+			'truncate'
+		)
+
+		topicText.classList.add(
+			'text-xs',
+			'text-frostedmint-source'
+		)
+
+		return tagEl;
 	}
 
 	public getRootElement(): HTMLElement {

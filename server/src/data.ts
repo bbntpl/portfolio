@@ -49,7 +49,8 @@ export const aboutMeInfo: Profile = {
 	about: [
 		'The first website I have created ever was for my high school senior project on deforestation. I used only HTML/CSS written in Notepad++ and hosted the website through GoDaddy. A few years later, around 2019, I wrote my first real code (that is not HTML & CSS) in C#. Eventually, I stumbled upon learning to develop websites again in 2022 using The Odin Project courses.',
 		'My life\'s purpose revolves around constant improvement, both in myself and in my surroundings. I am dedicated to refining my skills and developing my understanding.',
-		'As for my interests and hobbies, it\'s difficult to narrow my interests because I\'m almost interested in everything that can be grasped/comprehend. However, if I have to share my current hobbies: web dev, language acquisition, studying, blogging, and mathematics.'
+		'As for my interests and hobbies, it\'s difficult to narrow my interests because I\'m almost interested in everything that can be grasped/comprehend. However, if I have to share my current hobbies: web dev, language acquisition, studying, blogging, and mathematics.',
+		'As of Q3 2023, I\'ve been working on my personal blog, online therapy booking, and facebook clone websites'
 	],
 	randomFacts: [
 		{
@@ -59,7 +60,7 @@ export const aboutMeInfo: Profile = {
 		{
 			label: 'Favorite Music Genre',
 			value: 'Jazz Fusion'
-		}
+		},
 	]
 }
 
