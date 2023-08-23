@@ -80,7 +80,7 @@ export default class ProgressIndicator {
 	private getHexaIcon({
 		rootContainerWidth,
 		section
-	}: HexaIconArgs): HTMLDivElement | false {
+	}: HexaIconArgs): HTMLDivElement {
 		const hexagon = document.createElement('div');
 		const hexagonInner = document.createElement('div');
 
@@ -88,7 +88,6 @@ export default class ProgressIndicator {
 		const capitalizedSectionName = `${sectionName.charAt(0).toUpperCase()}${sectionName.slice(1)}`;
 		const icon = new Image();
 		const iconSrc = getIcon({ name: capitalizedSectionName });
-		icon.src = iconSrc;
 
 		const hexagonDim = Math.round(rootContainerWidth * 1.4);
 		hexagon.classList.add(
@@ -104,13 +103,12 @@ export default class ProgressIndicator {
 		)
 
 		if (iconSrc) {
+			icon.src = iconSrc;
 			hexagon.appendChild(hexagonInner);
 			hexagonInner.appendChild(icon)
 			icon.classList.add('fill-transparent', 'bg-transparent')
 
 			return hexagon;
-		} else {
-			return false;
 		}
 	}
 

@@ -7,10 +7,13 @@ import { WebpackConfig } from './webpack.types';
 const config: WebpackConfig = function (env) {
 	return {
 		mode: env.production ? 'production' : 'development',
-		entry: './src/index.ts',
+		entry: {
+			index: './src/index.ts'
+		},
 		output: {
 			path: path.resolve(__dirname, 'dist'),
-			filename: 'bundle.js',
+			filename: '[name].bundle.js',
+			clean: true
 		},
 		module: {
 			rules: [
@@ -39,7 +42,7 @@ const config: WebpackConfig = function (env) {
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				title: 'My Portfolio',
+				title: 'Portfolio V1 of BBA',
 				template: 'src/index.html'
 			}),
 			new HtmlWebpackTagsPlugin({ tags: ['output.css'], append: true })
@@ -57,7 +60,7 @@ const config: WebpackConfig = function (env) {
 			compress: true,
 			port: 5500
 		},
-		devtool: env.production ? 'source-map' : 'eval-source-map',
+		devtool: env.production ? false : 'eval-source-map',
 	}
 };
 

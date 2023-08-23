@@ -4,8 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build:css": "tailwindcss -i ./src/style.css -o ./dist/output.css --minify --watch",
-		"build": "npm run build:css && webpack --env production",
+		"build:css": "tailwindcss -i ./src/style.css -o ./dist/output.css --minify",
+		"build:webpack": "webpack --env production",
+		"build": "npm run build:webpack && npm run build:css",
 		"serve": "webpack-dev-server --env development",
 		"serve:error": "webpack serve --env development --client-overlay-errors "
 	},

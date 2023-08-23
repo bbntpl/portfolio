@@ -8,7 +8,7 @@ module.exports = {
 		'./src/index.html',
 		'./src/index.ts',
 	],
-	// added for dynamically applied classnames
+	// Added for dynamically applied classnames
 	safelist: [
 		{
 			pattern: /(bg|text|border)-(bluemine|downy|frostedmint)-(100|400|500|source)/
