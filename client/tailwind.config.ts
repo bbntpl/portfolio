@@ -3,8 +3,10 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 module.exports = {
 	content: [
-		"./src/**/*.ts",
-		"./**/*.html"
+		'./src/components/**/*.{html,ts}',
+		'./src/lib/**/*.{html,ts}',
+		'./src/index.html',
+		'./src/index.ts',
 	],
 	// added for dynamically applied classnames
 	safelist: [
@@ -14,12 +16,36 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			borderRadius: {
+				'inherit': 'inherit'
+			},
 			spacing: {
-				'header-height': '4rem'
+				'header-height': '4rem',
+				'8px': '8px',
+				'16px': '16px',
+				'40px': '40px',
+				'80px': '80px'
 			},
 			fontFamily: {
 				'layout': ['AvenirBook', 'AvenirRoman', ...defaultTheme.fontFamily.sans],
 				'intro': ['PromptMedium', 'AvenirBook', 'AvenirRoman', 'sans-serif'],
+			},
+			maxWidth: {
+				'3/5': '60%',
+				'4/5': '80%'
+			},
+			maxHeight: {
+				'3/5': '60%',
+				'4/5': '80%'
+			},
+			rotate: {
+				'30': '30deg',
+				'60': '60deg',
+				'inherit': 'inherit'
+			},
+			borderColor: {
+				'transparent': 'transparent',
+				'inherit': 'inherit'
 			}
 		},
 		backgroundSize: {

@@ -58,17 +58,7 @@ class App {
 		this.#educationSection = new EducationalBackgrounds({
 			educationalBackgrounds: this.#data.educationalBackgrounds
 		});
-		this.#progressIndicator = new ProgressIndicator({
-			sections: [
-				this.#introSection.getRootElement(),
-				this.#aboutSection.getRootElement(),
-				this.#skillsSection.getRootElement(),
-				this.#projectsSection.getRootElement(),
-				this.#educationSection.getRootElement(),
-			]
-		});
 
-		this.#layoutContainer.appendChild(this.#progressIndicator.getElement());
 		this.#sectionContainer.appendChild(this.#introSection.getRootElement());
 		this.#sectionContainer.appendChild(this.#aboutSection.getRootElement());
 		this.#sectionContainer.appendChild(this.#skillsSection.getRootElement());
@@ -99,8 +89,6 @@ class App {
 			'pb-12',
 			'sm:px-12',
 			'sm:pb-24',
-			'lg:px-36',
-			'lg:pb-48',
 			'md:px-24',
 			'md:pb-36',
 			'lg:px-36',
@@ -108,6 +96,19 @@ class App {
 			'z-10',
 			'mx-auto',
 		);
+	}
+
+	public appendProgressIndicator() {
+		this.#progressIndicator = new ProgressIndicator({
+			sections: [
+				this.#introSection.getRootElement(),
+				this.#aboutSection.getRootElement(),
+				this.#skillsSection.getRootElement(),
+				this.#projectsSection.getRootElement(),
+				this.#educationSection.getRootElement(),
+			]
+		});
+		this.#layoutContainer.appendChild(this.#progressIndicator.getElement());
 	}
 
 	public getRootElement(): HTMLDivElement {
@@ -130,11 +131,13 @@ const dataRepo = DataRepository.getInstance();
 		// Create instance of app and pass the data
 		const app = new App(dataRepo.getData());
 		document.body.appendChild(app.getRootElement());
+		app.appendProgressIndicator();
 
 		// Activate viewport elements transitions
 		elementsInViewportTransitions({
-			elementClassName: 'viewport-element-transition',
-			threshold: 0.40
+			transitionName: 'viewport-element-transition',
+			threshold: 0.40,
+			prioritizedClassNames: 'progress-indicator'
 		});
 	} catch (error) {
 		console.log(error);

@@ -37,6 +37,6 @@ export default function getIcon({ name }: { name: string }) {
 		case 'Twitter':
 			return TwitterIcon;
 		default:
-			return PersonalLogo;
+			return false;
 	}
 }

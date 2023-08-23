@@ -140,7 +140,7 @@ export default class ProjectsSection {
 			'w-96',
 			'h-96',
 			'viewport-element-transition',
-			'overflow-hidden'
+			'overflow-hidden',
 		);
 		bgImage.classList.add(
 			...absoluteWrapperStyles,
@@ -169,8 +169,10 @@ export default class ProjectsSection {
 			'px-16',
 			'py-8',
 			'gap-y-2',
-			'duration-300'
+			'duration-300',
+			'focus:border-bluemine-200'
 		);
+		projectInfoWrapper.setAttribute('tabindex', '0');
 		projectLinks.classList.add(
 			'flex',
 			'content-center',

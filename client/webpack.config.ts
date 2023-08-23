@@ -1,5 +1,6 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlWebpackTagsPlugin from 'html-webpack-tags-plugin';
 import 'webpack-dev-server';
 import { WebpackConfig } from './webpack.types';
 
@@ -40,7 +41,8 @@ const config: WebpackConfig = function (env) {
 			new HtmlWebpackPlugin({
 				title: 'My Portfolio',
 				template: 'src/index.html'
-			})
+			}),
+			new HtmlWebpackTagsPlugin({ tags: ['output.css'], append: true })
 		],
 		devServer: {
 			static: {

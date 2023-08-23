@@ -29,12 +29,23 @@
   .section-text-heading {
     @apply font-bold text-2xl text-bluemine-100 uppercase pb-6;
   }
-  .portfolio-section, .intro-section {
+  .portfolio-section,
+  .intro-section {
     @apply flex flex-col mb-28 sm:mb-40 md:mb-60 lg:mb-80 xl:mb-96 2xl:mb-96;
   }
   .viewport-element-transition {
     @apply duration-300 ease-in-out -translate-y-10 opacity-0;
-  } 
+  }
+  .hexagon-wrapper {
+    @apply absolute;
+  }
+  .hexagon-icon {
+    @apply w-full h-full absolute flex items-center justify-center border-0 left-0 top-0;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  .hexagon-icon img {
+    @apply max-w-3/5 max-h-3/5;
+  }
 }
 
 html {
