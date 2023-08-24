@@ -1,7 +1,14 @@
 # Portfolio v1
-The first version of my portfolio which is a skills/projects-based type and dynamically structured using Github API.
+This is the first version of my portfolio which is a skills/projects-based type and dynamically structured using Github API.
 
-## Portfolio Inspirations
+## Setup requirements
+To make use of this setup, you'll need to define the following environment variables:
+
+- `GITHUB_USER`: *(Mandatory)* This should be the username of the account that has starred your GitHub repositories. It is required to create an alternate account, especially when your main account has bookmarks other than just your own projects.
+
+- `GITHUB_API_TOKEN`: This variable should hold your GitHub API token, which is essential for fetching necessary data from Github API.
+
+## Design/Structure Inspirations
 - [Ramki Pitchala](https://github.com/Ramko9999/Portfolio)
 
 ## Color Palette

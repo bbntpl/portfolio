@@ -78,7 +78,10 @@ export default class ProjectsSection {
 
 		const rootEl = document.createElement('div');
 		const bgImage: HTMLImageElement = new Image();
-		bgImage.src = projectImage;
+		if (projectImage) {
+			bgImage.src = projectImage;
+		}
+
 		const projectInfoWrapper = document.createElement('div');
 
 		const titleEl = document.createElement('h3');
@@ -97,11 +100,15 @@ export default class ProjectsSection {
 		repoLink.href = project.url;
 		repoLink.target = '_blank';
 
-		websiteLink.textContent = 'access live demo';
-		websiteLink.href = project.homepage;
-		websiteLink.target = '_blank';
+		if (project.homepage) {
+			websiteLink.textContent = 'access live demo';
+			websiteLink.href = project.homepage;
+			websiteLink.target = '_blank';
+		}
 
-		descriptionEl.textContent = projectDesc;
+		if (projectDesc) {
+			descriptionEl.textContent = projectDesc;
+		}
 
 		rootEl.appendChild(bgImage);
 		rootEl.appendChild(projectInfoWrapper);
@@ -109,7 +116,9 @@ export default class ProjectsSection {
 		projectInfoWrapper.appendChild(secondaryContent);
 		secondaryContent.appendChild(projectLinks);
 		projectLinks.appendChild(repoLinkWrapper);
-		projectLinks.appendChild(websiteLinkWrapper);
+		if (project.homepage) {
+			projectLinks.appendChild(websiteLinkWrapper);
+		}
 		repoLinkWrapper.appendChild(repoLink);
 		websiteLinkWrapper.appendChild(websiteLink);
 		secondaryContent.appendChild(descriptionEl);

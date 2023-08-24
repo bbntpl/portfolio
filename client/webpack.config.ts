@@ -43,7 +43,7 @@ const config: WebpackConfig = function (env) {
 		plugins: [
 			new HtmlWebpackPlugin({
 				title: 'Portfolio V1 of BBA',
-				template: 'src/index.html'
+				template: './src/index.html'
 			}),
 			new HtmlWebpackTagsPlugin({ tags: ['output.css'], append: true })
 		],
