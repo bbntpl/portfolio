@@ -6,8 +6,17 @@
 	"type": "module",
 	"scripts": {
 		"compile": "tsc",
-		"start": "npm run compile && node ./dist/index.js"
+		"start": "npm run compile && node ./dist/index.js",
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"lint": "turbo lint",
+		"test": "turbo test",
+		"deploy": "turbo deploy",
+		"clean": "turbo clean"
 	},
+	"workspaces": [
+		"apps/*"
+	],
 	"keywords": [],
 	"author": "",
 	"license": "ISC"

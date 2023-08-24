@@ -1,0 +1,28 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"pipeline": {
+		"build": {
+			"dependsOn": [
+				"^build"
+			],
+			"outputs": [
+				"dist/**"
+			]
+		},
+		"deploy": {
+			"dependsOn": [
+				"build"
+			]
+		},
+		"test": {},
+		"lint": {},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		}
+	},
+	"globalEnv": [
+		"GITHUB_API_TOKEN",
+		"GITHUB_USER"
+	]
+}
