@@ -5,12 +5,14 @@
 		],
 		"outDir": "dist",
 		"lib": [
-			"es2020"
+			"es2020",
+			// "DOM"
 		],
-		"target": "es2020",
+		"target": "es2017",
 		"module": "commonjs",
-		"moduleResolution": "Node16",
+		"moduleResolution": "NodeNext",
 		"esModuleInterop": true,
+        "removeComments": true,
 		"types": [
 			"node"
 		]

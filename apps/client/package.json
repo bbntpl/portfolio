@@ -8,7 +8,8 @@
 		"build:webpack": "webpack --env production",
 		"build": "npm run build:webpack && npm run build:css",
 		"serve": "webpack-dev-server --env development",
-		"serve:error": "webpack serve --env development --client-overlay-errors "
+		"serve:error": "webpack serve --env development --client-overlay-errors",
+		"start:prod": "webpack serve --env production"
 	},
 	"keywords": [],
 	"author": "",

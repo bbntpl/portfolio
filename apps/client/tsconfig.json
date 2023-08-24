@@ -3,8 +3,9 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "target":  "ES2017",
-        "moduleResolution": "nodenext",
-        "noImplicitAny": true
+        "moduleResolution": "NodeNext",
+        "noImplicitAny": true,
+        "removeComments": true
     },
     "include": [
         "src",

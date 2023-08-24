@@ -89,7 +89,7 @@ export default class ProgressIndicator {
 		const icon = new Image();
 		const iconSrc = getIcon({ name: capitalizedSectionName });
 
-		const hexagonDim = Math.round(rootContainerWidth * 1.4);
+		const hexagonDim = Math.round(rootContainerWidth * 1.3);
 		hexagon.classList.add(
 			'hexagon-wrapper',
 			'z-25'

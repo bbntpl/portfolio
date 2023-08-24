@@ -37,14 +37,14 @@
     @apply duration-300 ease-in-out -translate-y-10 opacity-0;
   }
   .hexagon-wrapper {
-    @apply absolute;
+    @apply absolute rotate-29;
   }
   .hexagon-icon {
     @apply w-full h-full absolute flex items-center justify-center border-0 left-0 top-0;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
   .hexagon-icon img {
-    @apply max-w-3/5 max-h-3/5;
+    @apply max-w-3/5 max-h-3/5 -rotate-30;
   }
 }
 

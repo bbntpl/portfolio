@@ -39,9 +39,8 @@ module.exports = {
 				'4/5': '80%'
 			},
 			rotate: {
+				'29': '29deg',
 				'30': '30deg',
-				'60': '60deg',
-				'inherit': 'inherit'
 			},
 			borderColor: {
 				'transparent': 'transparent',
