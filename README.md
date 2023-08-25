@@ -8,6 +8,8 @@ To make use of this setup, you'll need to define the following environment varia
 
 - `GITHUB_API_TOKEN`: This variable should hold your GitHub API token, which is essential for fetching necessary data from Github API.
 
+- `PORT`: *(Optional)*
+
 ## Design/Structure Inspirations
 - [Ramki Pitchala](https://github.com/Ramko9999/Portfolio)
 

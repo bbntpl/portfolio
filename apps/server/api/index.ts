@@ -1,14 +1,14 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import { ListUserStarredRepos, Portfolio, Project } from './types';
-import { aboutMeInfo, educationalBackgrounds, mySkillset } from './data';
+import { ListUserStarredRepos, Portfolio, Project } from '../types';
+import { aboutMeInfo, educationalBackgrounds, mySkillset } from '../data';
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 app.get('/api/data', async function (req, res, next) {
 	try {
