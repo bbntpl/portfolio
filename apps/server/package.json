@@ -15,7 +15,7 @@
 	"main": "index.ts",
 	"scripts": {
 		"build": "tsc",
-		"dev": "ts-node-dev src/index.ts",
+		"dev": "ts-node-dev api/index.ts",
 		"start": "ts-node dist/index.js"
 	},
 	"keywords": [],

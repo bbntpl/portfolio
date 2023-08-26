@@ -6,7 +6,6 @@
 	"type": "module",
 	"scripts": {
 		"compile": "tsc",
-		"start": "npm run compile && node ./dist/index.js",
 		"build": "turbo build",
 		"dev": "turbo dev",
 		"lint": "turbo lint",

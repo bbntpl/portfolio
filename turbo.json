@@ -23,6 +23,11 @@
 	},
 	"globalEnv": [
 		"GITHUB_API_TOKEN",
-		"GITHUB_USER"
+		"GITHUB_USER",
+		"PORT"
+	],
+	"globalDependencies": [
+		".env",
+		"tsconfig.json"
 	]
 }
