@@ -1,3 +1,4 @@
+import { baseUrl } from './api';
 import { Portfolio, TypeResponse } from './types';
 
 // State management TS class which uses singleton design pattern
@@ -20,7 +21,7 @@ export default class DataRepository {
 		url: string,
 		config: RequestInit = {}
 	): Promise<TypeResponse> {
-		const response = await fetch(url, config);
+		const response = await fetch(`${baseUrl}${url}`, config);
 		return await response.json();
 	}
 
