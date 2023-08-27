@@ -48,9 +48,9 @@ export const aboutMeInfo: Profile = {
 	],
 	about: [
 		'The first website I have created ever was for my high school senior project on deforestation. I used only HTML/CSS written in Notepad++ and hosted the website through GoDaddy. A few years later, around 2019, I wrote my first real code (that is not HTML & CSS) in C#. Eventually, I stumbled upon learning to develop websites again in 2022 using The Odin Project courses.',
-		'My life\'s purpose revolves around constant improvement, both in myself and in my surroundings. I am dedicated to refining my skills and developing my understanding.',
-		'As for my interests and hobbies, it\'s difficult to narrow my interests because I\'m almost interested in everything that can be grasped/comprehend. However, if I have to share my current hobbies: web dev, language acquisition, studying, blogging, and mathematics.',
-		'As of Q3 2023, I\'ve been working on my personal blog, online therapy booking, and facebook clone websites'
+		'My life\'s purpose revolves around constant improvement, both in myself and in my surroundings (if possible). I generally enjoy refining my skills and enriching my comprehension of things.',
+		'As for my interests, it\'s difficult to narrow down my interests because I\'m almost interested in everything that can be grasped/comprehend. And about my hobbies, my current ones: programming, learning languages,studying, reading books and writing drafts for blogging purposes.',
+		'As of Q3/Q4 2023, I\'ve been working on my personal blogging website, online therapy booking project, and Facebook clone.'
 	],
 	randomFacts: [
 		{
@@ -73,7 +73,7 @@ export const mySkillset: Skillset = [
 	{ level: 'beginner', name: 'TypeScript', category: 'frontend' },
 	{ level: 'beginner', name: 'Vue.js', category: 'frontend' },
 	// Back-end stuff
-	{ level: 'experienced', name: 'Node', category: 'backend' },
+	{ level: 'experienced', name: 'Node.js', category: 'backend' },
 	{ level: 'intermediate', name: 'Express', category: 'backend' },
 	{ level: 'intermediate', name: 'MongoDB', category: 'backend' },
 	// Dev Tools
@@ -82,7 +82,7 @@ export const mySkillset: Skillset = [
 	{ level: 'experienced', name: 'Git & Github', category: 'devtools' },
 	{ level: 'intermediate', name: 'Chrome/Firefox Dev Tools', category: 'devtools' },
 	// Others	
-	{ level: 'beginner', name: 'Firebase', category: 'others' },
+	{ level: 'intermediate', name: 'Firebase', category: 'others' },
 	{ level: 'beginner', name: 'GraphQL', category: 'others' },
 	{ level: 'intermediate', name: 'Figma', category: 'others' },
 	{ level: 'beginner', name: 'Julia', category: 'others' },
