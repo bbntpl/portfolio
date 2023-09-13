@@ -9,7 +9,7 @@
 			// "DOM"
 		],
 		"target": "es2017",
-		"module": "commonjs",
+		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"esModuleInterop": true,
         "removeComments": true,
