@@ -1,3 +1,7 @@
+import appendChildren from '../helpers/append-children';
+import createElement from '../helpers/create-element';
+import createElementWithText from '../helpers/create-text';
+
 import getIcon from './icons';
 
 export default class LoadingScreen {
@@ -9,38 +13,47 @@ export default class LoadingScreen {
 	#animatedLogoWrapper: HTMLDivElement;
 
 	constructor() {
-		this.#container = document.createElement('div');
-		this.#container.className = 'loading-container';
-		this.#text = document.createElement('p');
-		this.#text.textContent = 'Data minions are spawning...'
+		this.#container = createElement('div', {
+			attributes: {
+				class: [
+					'loading-container',
+					'flex',
+					'flex-col',
+					'items-center',
+					'justify-center',
+					'h-screen',
+					'bg-midnight'
+				]
+			}
+		});
+		this.#text = createElementWithText('p', {
+			text: 'Data minions are spawning...',
+			class: [
+				'text-lg',
+				'text-downy-source',
+				'mb-4',
+				'sm:ml-4'
+			]
+		});
 
 		this.#animatedLogoSrc = getIcon({ name: 'Loading' });
 		this.#staticLogoSrc = getIcon({ name: 'Error' });
 
-		this.#animatedLogoWrapper = document.createElement('div');
-
-		this.#animatedLogoObject = document.createElement('object');
-		this.#animatedLogoObject.setAttribute('type', 'image/svg+xml');
-		this.#animatedLogoObject.setAttribute('data', this.#animatedLogoSrc);
-		this.#animatedLogoObject.setAttribute('width', '110');
-		this.#animatedLogoObject.setAttribute('height', '110');
+		this.#animatedLogoWrapper = createElement('div');
+		this.#animatedLogoObject = createElement('object', {
+			attributes: {
+				type: 'image/svg+xml',
+				data: this.#animatedLogoSrc,
+				width: '110',
+				height: '110'
+			}
+		});
 
 		// Add the text and image to the container
-		this.#animatedLogoWrapper.appendChild(this.#animatedLogoObject);
-		this.#container.appendChild(this.#animatedLogoWrapper);
-		this.#container.appendChild(this.#text);
-
-		// Add classnames to set styles
-		this.#container.classList.add(
-			'flex',
-			'flex-col',
-			'items-center',
-			'justify-center',
-			'h-screen',
-			'bg-midnight'
-		);
-
-		this.#text.classList.add('text-lg', 'text-downy-source', 'mb-4', 'sm:ml-4');
+		appendChildren(this.#animatedLogoWrapper, [this.#animatedLogoObject]);
+		appendChildren(this.#container, [
+			this.#animatedLogoWrapper, this.#text
+		]);
 	}
 
 	public displayError(errorMessage: string = 'Something went wrong.') {
@@ -48,7 +61,5 @@ export default class LoadingScreen {
 		this.#animatedLogoObject.setAttribute('data', this.#staticLogoSrc);
 	}
 
-	public getElement(): HTMLDivElement {
-		return this.#container;
-	}
+	public getElement = (): HTMLDivElement => this.#container;
 }

@@ -12,7 +12,7 @@ interface PentaIconsPlacementArgs {
 }
 
 interface PentaIconArgs {
-	rootContainerWidth: number;
+	progressContainerWidth: number;
 	section: HTMLElement;
 }
 
@@ -68,7 +68,8 @@ export default class ProgressIndicator {
 	}
 
 	private updateScrollProgress = () => {
-		// The scroll height / 
+		// This gives a value representing how far the user has scrolled relative
+		// to he total scrollable area.
 		const progress = (scrollY / (document.documentElement.scrollHeight - innerHeight)) * 100;
 		this.#progress.style.height = `${progress < 100 ? progress : 100}%`;
 	}
@@ -80,10 +81,10 @@ export default class ProgressIndicator {
 		}, 0);
 
 	private getPentaIcon({
-		rootContainerWidth,
+		progressContainerWidth,
 		section
 	}: PentaIconArgs): HTMLDivElement {
-		const pentagonDim = Math.round(rootContainerWidth * 1.3);
+		const pentagonDim = Math.round(progressContainerWidth * 1.3);
 
 		const icon = new Image();
 		const pentagonInner = createElement('div', {
@@ -123,17 +124,22 @@ export default class ProgressIndicator {
 		let accumulatedSectionsHeight: number = 0;
 
 		for (const section of sections) {
-			const rootContainerWidth = this.#rootContainer.clientWidth || 30;
+			const progressContainerWidth = this.#rootContainer.clientWidth || 30;
 
 			const pentaIcon = this.getPentaIcon({
-				rootContainerWidth,
+				progressContainerWidth,
 				section
 			})
 
 			if (pentaIcon) {
-				const pentaIconPosAdjustment = Math.round(rootContainerWidth / 2);
+				// Since the width & height of 'progress' closely matches that of 'icon-wrapper',
+				// this computed value is utilized to slightly adjust the horizontal position
+				// of the icon for precise progression checkpoint alignment.
+				const pentaIconPosAdjustment = Math.round(progressContainerWidth / 2);
 				const pentaIconTopPos = Math.round((
-					(accumulatedSectionsHeight - pentaIconPosAdjustment) / totalSectionsHeight) * 100);
+					(accumulatedSectionsHeight - pentaIconPosAdjustment)
+					/ totalSectionsHeight) * 100);
+
 				pentaIcon.style.top = `${pentaIconTopPos}%`;
 
 				appendChildren(this.#rootContainer, [pentaIcon]);

@@ -5,7 +5,6 @@ import { Portfolio, TypeResponse } from './types';
 export default class DataRepository {
 	private static instance: DataRepository;
 
-	// Bookmarked: change data type to Portfolio later	
 	private portfolioData: Portfolio | null = null
 
 	private constructor() { }

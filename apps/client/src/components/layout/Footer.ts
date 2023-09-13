@@ -1,41 +1,45 @@
+import createElement from '../../helpers/create-element';
+
 export default class Footer {
 	#rootContainer: HTMLElement;
 	#footerLink: HTMLAnchorElement;
-	#currentYear: Number;
-	constructor({ githubLink }: { githubLink: string }) {
-		this.#rootContainer = document.createElement('footer');
-		this.#footerLink = document.createElement('a');
-		this.#currentYear = new Date().getFullYear();
 
+	constructor({ githubUrl }: { githubUrl: string }) {
+		const currentYear = new Date().getFullYear();
 		const copyrightSymbol = String.fromCharCode(169);
+		const footerText = `${copyrightSymbol} Beaver Bryan Antipolo ${currentYear}`
 
-		this.#footerLink.href = githubLink;
-		this.#footerLink.textContent = `${copyrightSymbol} Beaver Bryan Antipolo ${this.#currentYear}`;
+		this.#footerLink = createElement('a', {
+			attributes: {
+				href: githubUrl,
+				class: [
+					'text-downy-source',
+					'font-layout',
+					'text-align',
+					'transition',
+					'duration-300',
+					'hover:text-downy-100',
+					'hover:cursor-pointer',
+					'viewport-element-transition'
+				]
+			},
+			textContent: footerText,
+		});
 
-		this.#rootContainer.appendChild(this.#footerLink);
-
-		// Add classes to apply styles
-		this.#rootContainer.classList.add(
-			'flex',
-			'justify-center',
-			'bottom-0',
-			'w-full',
-			'py-10',
-			'z-10',
-		)
-		this.#footerLink.classList.add(
-			'text-downy-source',
-			'font-layout',
-			'text-align',
-			'transition',
-			'duration-300',
-			'hover:text-downy-100',
-			'hover:cursor-pointer',
-			'viewport-element-transition'
-		)
+		this.#rootContainer = createElement('footer', {
+			attributes: {
+				class: [
+					'flex',
+					'justify-center',
+					'bottom-0',
+					'w-full',
+					'py-10',
+					'z-10',
+				]
+			},
+			children: [this.#footerLink]
+		});
 	}
 
-	public getRootElement(): HTMLElement {
-		return this.#rootContainer;
-	}
+	public getRootElement = (): HTMLElement => this.#rootContainer;
 }

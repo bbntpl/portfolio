@@ -43,11 +43,11 @@
     @apply w-full h-full absolute flex items-center justify-center border-0 left-0 top-0;
     background: linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0.7) 25%,
+      rgba(100, 204, 197, 1) 0%,
+      rgba(100, 204, 197, 0.7) 25%,
       rgba(255, 255, 255, 0.5) 50%,
-      rgba(255, 255, 255, 0.7) 75%,
-      rgba(255, 255, 255, 0.8) 100%
+      rgba(100, 204, 197, 0.7) 75%,
+      rgba(100, 204, 197, 1) 100%
     );
     clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
   }
