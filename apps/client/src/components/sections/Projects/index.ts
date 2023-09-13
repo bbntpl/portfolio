@@ -18,27 +18,53 @@ const linkStyles: Array<string> = [
 	'hover:text-frostedmint-source'
 ]
 
+const projectListLinkWrapperStyles = [
+	'bg-bluemine-300',
+	'text-sm',
+	'text-semibold',
+	'text-midnight',
+	'hover:bg-bluemine-200',
+	'py-2',
+	'my-2',
+	'viewport-element-transition'
+]
+
+const projectListLinkStyles = [
+	'px-4',
+	'py-2',
+	'top-0',
+	'bottom-0'
+]
+
 export default class ProjectsSection {
 	#rootContainer: HTMLElement;
 	#sectionHeading: HTMLHeadingElement;
 	#contentContainer: HTMLDivElement;
 	#projectGrids: HTMLDivElement;
-	#secondaryProjectListLinkWrapper: HTMLDivElement;
-	#secondaryProjectListLink: HTMLAnchorElement;
+
+	#mainProjectsHeading: HTMLHeadingElement;
+	#secondaryProjectsLinkWrapper: HTMLDivElement;
+	#secondaryProjectsLink: HTMLAnchorElement;
+	#otherProjectsLinkWrapper: HTMLDivElement;
+	#otherProjectsLink: HTMLAnchorElement;
 
 	constructor({ projects }: ProjectsInstanceArgs) {
-		this.#secondaryProjectListLink = createElement('a', {
+		this.#otherProjectsLink = createElement('a', {
+			attributes: {
+				href: 'https://github.com/stars/bvrbryn445/lists/other-webdev-projects',
+				target: '_blank',
+				class: projectListLinkStyles
+			},
+			textContent: 'View my other small website projects'
+		});
+
+		this.#secondaryProjectsLink = createElement('a', {
 			attributes: {
 				href: 'https://github.com/stars/bvrbryn445/lists/my-webdev-projects-2',
 				target: '_blank',
-				class: [
-					'px-4',
-					'py-2',
-					'top-0',
-					'bottom-0'
-				]
+				class: projectListLinkStyles
 			},
-			textContent: 'VIEW OTHER WEB DEV PROJECTS'
+			textContent: 'View secondary website projects'
 		});
 
 		this.#projectGrids = createElement('div', {
@@ -53,19 +79,31 @@ export default class ProjectsSection {
 			}
 		});
 
-		this.#secondaryProjectListLinkWrapper = createElement('div', {
+		this.#mainProjectsHeading = createElement('h2', {
 			attributes: {
 				class: [
-					'bg-bluemine-300',
-					'text-sm',
-					'text-semibold',
-					'text-midnight',
-					'hover:bg-bluemine-200',
-					'py-2',
-					'viewport-element-transition'
+					'text-bluemine-200',
+					'uppercase',
+					'text-xl',
+					'text-center',
+					'viewport-element-transition',
 				]
 			},
-			children: [this.#secondaryProjectListLink]
+			textContent: 'Developer\'s picks'
+		})
+
+		this.#secondaryProjectsLinkWrapper = createElement('div', {
+			attributes: {
+				class: projectListLinkWrapperStyles
+			},
+			children: [this.#secondaryProjectsLink]
+		});
+
+		this.#otherProjectsLinkWrapper = createElement('div', {
+			attributes: {
+				class: projectListLinkWrapperStyles
+			},
+			children: [this.#otherProjectsLink]
 		});
 
 		this.#sectionHeading = createElementWithText('h1', {
@@ -82,7 +120,12 @@ export default class ProjectsSection {
 					'font-sans'
 				]
 			},
-			children: [this.#projectGrids, this.#secondaryProjectListLinkWrapper]
+			children: [
+				this.#mainProjectsHeading,
+				this.#projectGrids,
+				this.#secondaryProjectsLinkWrapper,
+				this.#otherProjectsLinkWrapper
+			]
 		});
 
 		this.#rootContainer = createElement('section', {

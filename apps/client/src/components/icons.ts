@@ -2,6 +2,7 @@ import PersonalLogo from '../assets/icons/logo/bb-logo.svg';
 import PersonalLogoAnimated from '../assets/icons/logo/bb-logo-animated.svg';
 import AboutIcon from '../assets/icons/menu/about.svg';
 import EducationIcon from '../assets/icons/menu/education.svg';
+import EmailIcon from '../assets/icons/socials/mailto.svg'
 import SkillIcon from '../assets/icons/menu/skill.svg';
 import ProjectIcon from '../assets/icons/menu/web.svg';
 import FacebookIcon from '../assets/icons/socials/facebook.svg';
@@ -16,6 +17,8 @@ export default function getIcon({ name }: { name: string }) {
 			return AboutIcon;
 		case 'Education':
 			return EducationIcon;
+		case 'Email':
+			return EmailIcon;
 		case 'Error':
 			return PersonalLogo;
 		case 'Facebook':

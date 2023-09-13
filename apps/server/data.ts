@@ -44,6 +44,10 @@ export const aboutMeInfo: Profile = {
 		{
 			platform: 'Twitter',
 			url: 'https://twitter.com/qesabito'
+		},
+		{
+			platform: 'Email',
+			url: 'mailto:bbantipolo@gmail.com'
 		}
 	],
 	about: [

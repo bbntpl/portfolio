@@ -147,7 +147,7 @@ const dataRepo = DataRepository.getInstance();
 		// Activate viewport elements transitions
 		elementsInViewportTransitions({
 			transitionName: 'viewport-element-transition',
-			threshold: 0.40,
+			threshold: 0.4,
 			prioritizedClassNames: 'progress-indicator'
 		});
 	} catch (error) {
@@ -156,4 +156,3 @@ const dataRepo = DataRepository.getInstance();
 		loading.displayError(error.message);
 	}
 })()
-
