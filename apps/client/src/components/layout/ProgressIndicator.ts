@@ -1,15 +1,17 @@
+import appendChildren from '../../helpers/append-children';
+import createElement from '../../helpers/create-element';
 import getIcon from '../icons';
 
 interface ProgressIndicatorConstructorArgs {
 	sections: Array<HTMLElement>;
 }
 
-interface HexaIconsPlacementArgs {
+interface PentaIconsPlacementArgs {
 	sections: ProgressIndicatorConstructorArgs['sections'];
 	totalSectionsHeight: number;
 }
 
-interface HexaIconArgs {
+interface PentaIconArgs {
 	rootContainerWidth: number;
 	section: HTMLElement;
 }
@@ -19,45 +21,44 @@ export default class ProgressIndicator {
 	#progress: HTMLDivElement;
 
 	constructor({ sections }: ProgressIndicatorConstructorArgs) {
-		this.#rootContainer = document.createElement('div');
-		this.#progress = document.createElement('div');
+		this.#progress = createElement('div', {
+			attributes: {
+				class: ['bg-downy-source', 'rounded-md', 'w-full', 'h-0']
+			}
+		});
 
-		this.#rootContainer.appendChild(this.#progress);
+		this.#rootContainer = createElement('div', {
+			attributes: {
+				class: [
+					'fixed',
+					'top-1/3',
+					'transform',
+					'hidden',
+					'sm:flex',
+					'md:flex',
+					'lg:flex',
+					'xl:flex',
+					'2xl:flex',
+					'border-4',
+					'justify-center',
+					'rounded-xl',
+					'border-downy-source',
+					'w-6',
+					'h-96',
+					'left-8px',
+					'sm:left-16px',
+					'md:left-40px',
+					'lg:left-80px',
+					'max-h-3/5',
+					'z-10',
+					'progress-indicator',
+					'viewport-element-transition'
+				]
+			},
+			children: [this.#progress]
+		});
 
-		this.#rootContainer.classList.add(
-			'fixed',
-			'top-1/3',
-			'transform',
-			'hidden',
-			'sm:flex',
-			'md:flex',
-			'lg:flex',
-			'xl:flex',
-			'2xl:flex',
-			'border-4',
-			'justify-center',
-			'rounded-xl',
-			'border-downy-source',
-			'w-6',
-			'h-96',
-			'left-8px',
-			'sm:left-16px',
-			'md:left-40px',
-			'lg:left-80px',
-			'max-h-3/5',
-			'z-10',
-			'progress-indicator',
-			'viewport-element-transition'
-		);
-
-		this.#progress.classList.add(
-			'bg-downy-source',
-			'rounded-md',
-			'w-full',
-			'h-0'
-		)
-
-		this.putHexaIcons({
+		this.putPentaIcons({
 			sections,
 			totalSectionsHeight: this.getTotalSectionsHeight(sections),
 		});
@@ -67,6 +68,7 @@ export default class ProgressIndicator {
 	}
 
 	private updateScrollProgress = () => {
+		// The scroll height / 
 		const progress = (scrollY / (document.documentElement.scrollHeight - innerHeight)) * 100;
 		this.#progress.style.height = `${progress < 100 ? progress : 100}%`;
 	}
@@ -77,62 +79,64 @@ export default class ProgressIndicator {
 			return totalHeight + sectionHeight;
 		}, 0);
 
-	private getHexaIcon({
+	private getPentaIcon({
 		rootContainerWidth,
 		section
-	}: HexaIconArgs): HTMLDivElement {
-		const hexagon = document.createElement('div');
-		const hexagonInner = document.createElement('div');
+	}: PentaIconArgs): HTMLDivElement {
+		const pentagonDim = Math.round(rootContainerWidth * 1.3);
+
+		const icon = new Image();
+		const pentagonInner = createElement('div', {
+			attributes: {
+				class: ['pentagon-icon']
+			},
+			children: [icon]
+		});
+		const pentagon = createElement('div', {
+			attributes: {
+				class: ['pentagon-wrapper', 'z-25'],
+				style: `width: ${pentagonDim}px; height: ${pentagonDim}px;`
+			},
+			children: [pentagonInner]
+		});
 
 		const sectionName = section.id;
 		const capitalizedSectionName = `${sectionName.charAt(0).toUpperCase()}${sectionName.slice(1)}`;
-		const icon = new Image();
 		const iconSrc = getIcon({ name: capitalizedSectionName });
-
-		const hexagonDim = Math.round(rootContainerWidth * 1.3);
-		hexagon.classList.add(
-			'hexagon-wrapper',
-			'z-25'
-		);
-		hexagon.style.width = `${hexagonDim}px`;
-		hexagon.style.height = `${hexagonDim}px`;
-
-		hexagonInner.classList.add(
-			'hexagon-icon',
-			'bg-downy-100'
-		)
 
 		if (iconSrc) {
 			icon.src = iconSrc;
-			hexagon.appendChild(hexagonInner);
-			hexagonInner.appendChild(icon)
 			icon.classList.add('fill-transparent', 'bg-transparent')
 
-			return hexagon;
+			const bgColor = getComputedStyle(pentagonInner).backgroundColor;
+			pentagonInner.style.setProperty('pentagon-inner-bg-color', bgColor);
+
+			return pentagon;
 		}
 	}
 
-	private putHexaIcons({
+
+	private putPentaIcons({
 		sections,
 		totalSectionsHeight,
-	}: HexaIconsPlacementArgs): void {
+	}: PentaIconsPlacementArgs): void {
 		let accumulatedSectionsHeight: number = 0;
 
 		for (const section of sections) {
 			const rootContainerWidth = this.#rootContainer.clientWidth || 30;
 
-			const hexaIcon = this.getHexaIcon({
+			const pentaIcon = this.getPentaIcon({
 				rootContainerWidth,
 				section
 			})
 
-			if (hexaIcon) {
-				const hexaIconPosAdjustment = Math.round(rootContainerWidth / 2);
-				const hexaIconTopPos = Math.round((
-					(accumulatedSectionsHeight - hexaIconPosAdjustment) / totalSectionsHeight) * 100);
-				hexaIcon.style.top = `${hexaIconTopPos}%`;
+			if (pentaIcon) {
+				const pentaIconPosAdjustment = Math.round(rootContainerWidth / 2);
+				const pentaIconTopPos = Math.round((
+					(accumulatedSectionsHeight - pentaIconPosAdjustment) / totalSectionsHeight) * 100);
+				pentaIcon.style.top = `${pentaIconTopPos}%`;
 
-				this.#rootContainer.appendChild(hexaIcon);
+				appendChildren(this.#rootContainer, [pentaIcon]);
 			}
 
 			accumulatedSectionsHeight += section.clientHeight;
