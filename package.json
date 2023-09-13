@@ -7,11 +7,10 @@
 	"scripts": {
 		"compile": "tsc",
 		"build": "turbo build",
-		"dev": "turbo dev",
+		"dev": " NODE_ENV=development turbo dev",
 		"lint": "turbo lint",
 		"test": "turbo test",
-		"deploy": "turbo deploy",
-		"clean": "turbo clean"
+		"deploy": "turbo deploy"
 	},
 	"workspaces": [
 		"apps/*"

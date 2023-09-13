@@ -3,6 +3,7 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "target":  "ES2017",
+        "module": "NodeNext",
         "moduleResolution": "NodeNext",
         "noImplicitAny": true,
         "removeComments": true

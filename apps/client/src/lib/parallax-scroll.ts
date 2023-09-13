@@ -43,7 +43,7 @@ export default class ParallaxScrollElement {
 
 		this.#parallaxBackground.style.backgroundImage = `url('${backgroundUrl}')`;
 
-		// Apply parallax scroll effect
+		// Apply illusion of parallax scroll effect
 		window.addEventListener('scroll', () => {
 			/* Increasing the factor will make the scrolling illusion effect faster since the background 
 			 image is being moved in response to the scroll event.

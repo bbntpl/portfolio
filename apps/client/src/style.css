@@ -36,15 +36,36 @@
   .viewport-element-transition {
     @apply duration-300 ease-in-out -translate-y-10 opacity-0;
   }
-  .hexagon-wrapper {
-    @apply absolute rotate-29;
+  .pentagon-wrapper {
+    @apply absolute -rotate-180;
   }
-  .hexagon-icon {
+  .pentagon-icon {
     @apply w-full h-full absolute flex items-center justify-center border-0 left-0 top-0;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: linear-gradient(
+      to right,
+      rgba(100, 204, 197, 1) 0%,
+      rgba(100, 204, 197, 0.7) 25%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(100, 204, 197, 0.7) 75%,
+      rgba(100, 204, 197, 1) 100%
+    );
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
   }
-  .hexagon-icon img {
-    @apply max-w-3/5 max-h-3/5 -rotate-30;
+  .pentagon-icon::before {
+    @apply bg-downy-100;
+    content: "";
+    position: absolute;
+    opacity: 0.5;
+    left: 50%;
+    width: 28px;
+    height: 50px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transform: translateX(-50%);
+  }
+
+  .pentagon-icon img {
+    @apply max-w-3/5 max-h-3/5 rotate-180;
   }
 }
 

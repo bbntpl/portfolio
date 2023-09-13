@@ -7,6 +7,9 @@ import {
 	SkillCategoriesValues
 } from './index.types';
 
+import createElement from '../../../helpers/create-element';
+import createElementWithText from '../../../helpers/create-text';
+
 interface SkillsInstanceArgs {
 	skills: Array<Skill>
 }
@@ -38,129 +41,140 @@ export default class SkillsSection {
 	#skillCategories: HTMLDivElement;
 
 	constructor({ skills }: SkillsInstanceArgs) {
-		this.#rootContainer = document.createElement('section');
-		this.#sectionHeading = document.createElement('h1');
-		this.#rootContainer.id = 'skills'
-		this.#sectionHeading.textContent = 'Skills';
-		this.#contentContainer = document.createElement('div');
-		this.#skillCategories = document.createElement('div');
+		this.#skillCategories = createElement('div');
 
-		this.#rootContainer.appendChild(this.#sectionHeading);
-		this.#rootContainer.appendChild(this.#contentContainer);
-		this.#contentContainer.appendChild(
-			this.createSkillLevelLegend(skillLevels.map(sl => sl.value))
-		)
-		this.#contentContainer.appendChild(this.#skillCategories);
+		this.#sectionHeading = createElementWithText('h1', {
+			text: 'Skills',
+			class: [
+				'section-text-heading',
+				'viewport-element-transition'
+			]
+		});
+
+		this.#contentContainer = createElement('div', {
+			attributes: {
+				class: ['font-sans', 'flex', 'flex-col',]
+			},
+			children: [
+				this.createSkillLevelLegend(skillLevels.map(sl => sl.value)),
+				this.#skillCategories
+			]
+		});
+
+		this.#rootContainer = createElement('section', {
+			attributes: {
+				id: 'skills',
+				class: ['portfolio-section']
+			},
+			children: [this.#sectionHeading, this.#contentContainer]
+		});
+
 
 		for (const skillCategory of skillCategories) {
 			const filteredSkills = skills.filter(skill => {
 				return skill.category === skillCategory.key;
-			})
-				.sort((a, b) => { // sort by experience
-					const bLevelIndex = Number(skillLevels.find(sl => sl.value === b.level).key);
-					const aLevelIndex = Number(skillLevels.find(sl => sl.value === a.level).key);
+			}).sort((a, b) => { // sort by experience
+				const bLevelIndex = Number(skillLevels.find(sl => sl.value === b.level).key);
+				const aLevelIndex = Number(skillLevels.find(sl => sl.value === a.level).key);
 
-					return bLevelIndex - aLevelIndex;
-				});
+				return bLevelIndex - aLevelIndex;
+			});
 
 			this.#skillCategories.appendChild(this.createSkillCategory(filteredSkills));
 		}
 
-		this.#rootContainer.classList.add('portfolio-section');
-		this.#sectionHeading.classList.add(
-			'section-text-heading',
-			'viewport-element-transition'
-		);
-		this.#contentContainer.classList.add(
-			'font-sans',
-			'flex',
-			'flex-col',
-		)
 	}
 
 	private createSkillLevelLegend(skillLevels: Array<SkillLevelsValues>): HTMLDivElement {
-		const legend = document.createElement('div');
-		legend.classList.add(
-			'flex',
-			'flex-row',
-			'flex-wrap',
-			'gap-8',
-			'justify-center',
-			'select-none',
-			'mb-12',
-			'px-6'
-		)
+		const legend = createElement('div', {
+			attributes: {
+				class: [
+					'flex',
+					'flex-row',
+					'flex-wrap',
+					'gap-8',
+					'justify-center',
+					'select-none',
+					'mb-12',
+					'px-6'
+				]
+			}
+		});
 
 		for (let i = 0; i < skillLevels.length; i++) {
-			const legendItem = document.createElement('span');
-			const colorLevel = document.createElement('div');
-			const skillLevel = document.createElement('p');
-			skillLevel.textContent = skillLevels[i];
 			const textColor = `text-${skillLevelColors[i]}`;
 			const bgColor = `bg-${skillLevelColors[i]}`;
 
-			legendItem.appendChild(colorLevel);
-			legendItem.appendChild(skillLevel);
-			legend.appendChild(legendItem);
+			const colorLevel = createElement('div', {
+				attributes: {
+					class: [bgColor, 'w-4', 'h-4']
+				}
+			});
 
-			legendItem.classList.add(
-				'inline-flex',
-				'items-center',
-				'gap-3',
-				'viewport-element-transition'
-			)
-			colorLevel.classList.add(
-				bgColor,
-				'w-4',
-				'h-4'
-			)
-			skillLevel.classList.add(
-				textColor
-			)
+			const skillLevel = createElementWithText('p', {
+				text: skillLevels[i],
+				class: textColor
+			});
+
+			const legendItem = createElement('span', {
+				attributes: {
+					class: [
+						'inline-flex',
+						'items-center',
+						'gap-3',
+						'viewport-element-transition'
+					]
+				},
+				children: [colorLevel, skillLevel]
+			});
+			legend.appendChild(legendItem);
 		}
 
 		return legend;
 	}
 
 	private createSkillCategory(skillsByCategory: Array<Skill>): HTMLDivElement {
-		const skillCategoryContainer = document.createElement('div');
-		const skillCategoryText = document.createElement('h2');
-		skillCategoryText.textContent = SkillCategories[skillsByCategory[0]?.category] || '';
-		const skillList = document.createElement('div');
+		const skillCategoryText = createElementWithText('h2', {
+			text: SkillCategories[skillsByCategory[0]?.category] || '',
+			class: [
+				'mb-4',
+				'text-bluemine-200',
+				'text-xl',
+				'viewport-element-transition'
+			]
+		});
 
-		skillCategoryContainer.appendChild(skillCategoryText);
-		skillCategoryContainer.appendChild(skillList);
+		const skillList = createElement('div', {
+			attributes: {
+				class: [
+					'flex',
+					'flex-row',
+					'flex-wrap',
+					'ml-12',
+					'md:ml-18',
+					'lg:ml-24',
+					'gap-4',
+					'ml-4'
+				]
+			}
+		});
 
-		skillCategoryContainer.classList.add(
-			'mb-6',
-			'pl-8',
-			'md:pl-12',
-			'lg:pl-12',
-			'xl:pl-12',
-			'2xl:pl-12',
-		)
-		skillCategoryText.classList.add(
-			'mb-4',
-			'text-bluemine-200',
-			'text-xl',
-			'viewport-element-transition'
-		)
-		skillList.classList.add(
-			'flex',
-			'flex-row',
-			'flex-wrap',
-			'ml-12',
-			'md:ml-18',
-			'lg:ml-24',
-			'gap-4',
-			'ml-4'
-		)
+		const skillCategoryContainer = createElement('div', {
+			attributes: {
+				class: [
+					'mb-6',
+					'pl-8',
+					'md:pl-12',
+					'lg:pl-12',
+					'xl:pl-12',
+					'2xl:pl-12',
+				]
+			},
+			children: [skillCategoryText, skillList]
+		});
 
 		for (let i = 0; i < skillsByCategory.length; i++) {
 			const skill = skillsByCategory[i];
-			const skillEl = document.createElement('div');
-			const skillText = document.createElement('p');
-			skillText.textContent = skill.name;
 
 			// Color and skill level are associated by their indexes
 			// E.g. colors[0] -> skillLevel[0] and so on...
@@ -171,37 +185,40 @@ export default class SkillsSection {
 			const bgColor = `bg-${color}`;
 
 			// Skill elements are to apply their own tier-esque minimal styles based on experience level
-			const skillLevelTierStylings = colorIndex === skillLevels.length - 1
-				? [borderColor, bgColor]
-				: [borderColor];
-			const skillLevelText = colorIndex === skillLevels.length - 1 ? 'text-midnight' : textColor;
+			const skillLevelTierStylings = colorIndex === 0
+				? [borderColor]
+				: [borderColor, bgColor]
+			const skillLevelText = colorIndex === 0
+				? textColor : 'text-midnight';
 
-			skillEl.classList.add(
-				'flex',
-				'flex-row',
-				'flex-wrap',
-				'items-start',
-				'px-6',
-				'py-2',
-				...skillLevelTierStylings,
-				'border-2',
-				'rounded-md',
-				'viewport-element-transition'
-			)
+			const skillText = createElementWithText('p', {
+				text: skill.name,
+				class: [skillLevelText, 'font-semibold']
+			});
 
-			skillText.classList.add(
-				skillLevelText,
-				'font-semibold'
-			)
+			const skillEl = createElement('div', {
+				attributes: {
+					class: [
+						'flex',
+						'flex-row',
+						'flex-wrap',
+						'items-start',
+						'px-6',
+						'py-2',
+						...skillLevelTierStylings,
+						'border-2',
+						'rounded-md',
+						'viewport-element-transition'
+					]
+				},
+				children: [skillText]
+			});
 
-			skillEl.appendChild(skillText);
 			skillList.appendChild(skillEl);
 		}
 
 		return skillCategoryContainer;
 	}
 
-	public getRootElement(): HTMLElement {
-		return this.#rootContainer;
-	}
+	public getRootElement = (): HTMLElement => this.#rootContainer;
 }
