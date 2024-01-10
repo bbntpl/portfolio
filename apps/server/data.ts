@@ -23,7 +23,7 @@ export const educationalBackgrounds: Array<UniversityDegree | SelfDirectedCourse
 ]
 
 export const aboutMeInfo: Profile = {
-	imageUrl: 'https://drive.google.com/uc?export=view&id=1qIuDMS4B9gtw9tLBuosfH2eHjOJpBLAO',
+	imageUrl: 'https://imgur.com/SoV9PnW.jpg',
 	socialMediaLinks: [
 		{
 			platform: 'Facebook',
@@ -54,7 +54,6 @@ export const aboutMeInfo: Profile = {
 		'The first website I have created ever was for my high school senior project on deforestation. I used only HTML/CSS written in Notepad++ and hosted the website through GoDaddy. A few years later, around 2019, I wrote my first real code (that is not HTML & CSS) in C#. Eventually, I stumbled upon learning to develop websites again in 2022 using The Odin Project courses.',
 		'My life\'s purpose revolves around constant improvement, both in myself and in my surroundings (if possible). I generally enjoy refining my skills and enriching my comprehension of things.',
 		'As for my interests, it\'s difficult to narrow down my interests because I\'m almost interested in everything that can be grasped/comprehend. And about my hobbies, my current ones: programming, learning languages,studying, reading books and writing drafts for blogging purposes.',
-		'During Q3 and Q4 of 2023, I\'ve been focused on developing my personal blogging site, a google calendar clone, an online therapy appointment system, and a Facebook-inspired social media clone.'
 	],
 	randomFacts: [
 		{

@@ -28,11 +28,12 @@ export default class DataRepository {
 		try {
 			const response: TypeResponse<Portfolio> = await this.request('/api/data');
 			if (!response.ok || !response.data) {
-				throw new Error('Failed to fetch portfolio data.');
+				throw Error(response.message);
 			}
 
 			this.portfolioData = response.data;
 		} catch (error) {
+			console.log(error.data);
 			throw new Error(error.message || 'Failed to fetch portfolio data.');
 		}
 	}

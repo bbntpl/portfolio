@@ -57,7 +57,7 @@ export default class LoadingScreen {
 	}
 
 	public displayError(errorMessage: string = 'Something went wrong.') {
-		this.#text.textContent = `${errorMessage} Try reload.`
+		this.#text.textContent = `${errorMessage}`
 		this.#animatedLogoObject.setAttribute('data', this.#staticLogoSrc);
 	}
 

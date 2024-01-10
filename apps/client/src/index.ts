@@ -16,7 +16,6 @@ import EducationalBackgrounds from './components/sections/Education';
 import { elementsInViewportTransitions } from './lib/viewport-elements-transitions';
 
 import createElement from './helpers/create-element';
-import createElementWithText from './helpers/create-text';
 import appendChildren from './helpers/append-children';
 
 class App {
@@ -151,7 +150,6 @@ const dataRepo = DataRepository.getInstance();
 			prioritizedClassNames: 'progress-indicator'
 		});
 	} catch (error) {
-		console.log(error);
 		// If fetching process failed, display error screen
 		loading.displayError(error.message);
 	}

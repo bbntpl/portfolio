@@ -4,6 +4,16 @@ import 'dotenv/config';
 export type ListUserStarredRepos =
 	Endpoints['GET /user/starred']['response'];
 
+export interface RequestError {
+	message: string;
+	documentation_url: string;
+	(key: string): any | undefined;
+}
+
+export function isRequestError(data: any): data is RequestError {
+	return 'message' in data && typeof data.message === 'string';
+}
+
 interface SocialMediaLink {
 	platform: string;
 	url: string;

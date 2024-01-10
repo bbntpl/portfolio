@@ -5,6 +5,7 @@ import { Skillset } from './components/sections/Skills/index.types';
 
 export type TypeResponse<T> = {
 	data: T | null;
+	message: string;
 	ok: boolean;
 }
 
