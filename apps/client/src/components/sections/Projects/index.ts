@@ -51,7 +51,7 @@ export default class ProjectsSection {
 	constructor({ projects }: ProjectsInstanceArgs) {
 		this.#otherProjectsLink = createElement('a', {
 			attributes: {
-				href: 'https://github.com/stars/bvrbryn445/lists/other-webdev-projects',
+				href: 'https://github.com/stars/bbntpl/lists/other-webdev-projects',
 				target: '_blank',
 				class: projectListLinkStyles
 			},
@@ -60,7 +60,7 @@ export default class ProjectsSection {
 
 		this.#secondaryProjectsLink = createElement('a', {
 			attributes: {
-				href: 'https://github.com/stars/bvrbryn445/lists/my-webdev-projects-2',
+				href: 'https://github.com/stars/bbntpl/lists/my-webdev-projects-2',
 				target: '_blank',
 				class: projectListLinkStyles
 			},

@@ -31,7 +31,7 @@ export const aboutMeInfo: Profile = {
 		},
 		{
 			platform: 'Github',
-			url: 'https://github.com/bvrbryn445'
+			url: 'https://github.com/bbntpl'
 		},
 		{
 			platform: 'Instagram',
