@@ -112,10 +112,10 @@ class App {
 		this.#progressIndicator = new ProgressIndicator({
 			sections: [
 				this.#introSection.getRootElement(),
-				this.#aboutSection.getRootElement(),
-				this.#skillsSection.getRootElement(),
 				this.#projectsSection.getRootElement(),
+				this.#skillsSection.getRootElement(),
 				this.#educationSection.getRootElement(),
+				this.#aboutSection.getRootElement(),
 			]
 		});
 		appendChildren(this.#layoutContainer, [this.#progressIndicator.getElement()]);

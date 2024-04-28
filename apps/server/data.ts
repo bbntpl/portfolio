@@ -71,7 +71,7 @@ export const mySkillset: Skillset = [
 	{ level: 'intermediate', name: 'Firebase', category: 'others' },
 	{ level: 'intermediate', name: 'Figma', category: 'others' },
 	{ level: 'beginner', name: 'GraphQL', category: 'others' },
-	{ level: 'beginner', name: '0Auth', category: 'others' },
+	{ level: 'beginner', name: 'Auth0', category: 'others' },
 	{ level: 'beginner', name: 'Julia', category: 'others' },
 	{ level: 'beginner', name: 'Accessibility', category: 'others' },
 ]

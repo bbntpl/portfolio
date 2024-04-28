@@ -29,6 +29,10 @@
   .section-text-heading {
     @apply font-bold text-2xl text-bluemine-100 uppercase pb-6;
   }
+  .portfolio-section {
+    @apply pt-12;
+  }
+
   .portfolio-section,
   .intro-section {
     @apply flex flex-col mb-28 sm:mb-40 md:mb-60 lg:mb-80 xl:mb-96 2xl:mb-96;
@@ -44,15 +48,16 @@
     background: linear-gradient(
       to right,
       rgba(100, 204, 197, 1) 0%,
-      rgba(100, 204, 197, 0.7) 25%,
+      rgba(100, 204, 197, 1) 25%,
       rgba(255, 255, 255, 0.5) 50%,
-      rgba(100, 204, 197, 0.7) 75%,
+      rgba(100, 204, 197, 1) 75%,
       rgba(100, 204, 197, 1) 100%
     );
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
   }
   .pentagon-icon::before {
-    @apply bg-downy-100;
+    @apply bg-bluemine-100;
     content: "";
     position: absolute;
     opacity: 0.5;

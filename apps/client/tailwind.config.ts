@@ -61,6 +61,7 @@ module.exports = {
 		},
 		colors: {
 			'midnight': {
+				dark: '#00101B',
 				DEFAULT: '#001C30',
 				100: '#D6DDE8'
 			},

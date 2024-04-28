@@ -10,17 +10,20 @@ interface HeaderListArgs {
 interface HeaderCoreProps {
 	currentScrollY: number;
 	previousVisualState: 'hidden' | 'displayed';
+	isLinkClickedBeforeScroll: boolean;
 }
 
 export default class Header {
 	#rootContainer: HTMLDivElement;
 	#logoObject: HTMLObjectElement;
 	#props: HeaderCoreProps;
+	#timeout: number | null = null;
 
 	constructor() {
 		this.#props = {
 			currentScrollY: window.scrollY,
-			previousVisualState: 'displayed'
+			previousVisualState: 'displayed',
+			isLinkClickedBeforeScroll: false
 		};
 
 		const logoSrc = getIcon({ name: 'Logo' });
@@ -87,6 +90,18 @@ export default class Header {
 		}
 	}
 
+	private resetSectionLinkClickStateAfterScrollEnds() {
+		if (this.#props.isLinkClickedBeforeScroll) {
+			this.#props.isLinkClickedBeforeScroll = false;
+		}
+	}
+
+	private handleSectionLinkClick() {
+		return () => {
+			this.#props.isLinkClickedBeforeScroll = true;
+		}
+	}
+
 	private createMenuList(items: Array<HeaderListArgs>): HTMLUListElement {
 		const sectionSelection = createElement('ul', {
 			attributes: {
@@ -115,6 +130,9 @@ export default class Header {
 					]
 				});
 
+				// Add onclick event to section links
+				sectionLink.onclick = this.handleSectionLinkClick();
+
 				sectionLink.href = `#${item.name}`;
 				appendChildren(listItem, [sectionLink]);
 
@@ -126,10 +144,22 @@ export default class Header {
 	}
 
 	private handleScroll() {
-		const { currentScrollY, previousVisualState } = this.#props
+		const { currentScrollY, previousVisualState } = this.#props;
+
+		if (this.#timeout !== null) {
+			clearTimeout(this.#timeout);
+		}
+
+		// Set a new timeout to handle scroll ends
+		this.#timeout = window.setTimeout(() => {
+			this.resetSectionLinkClickStateAfterScrollEnds();
+			this.#timeout = null;
+		}, 100); // Debounce time
 
 		// When the viewer scrolls down, it must disappear with transition
 		if (currentScrollY < window.scrollY && previousVisualState !== 'hidden') {
+			// If section link is clicked which may trigger possible auto scroll, prevent it to be hidden
+			if (this.#props.isLinkClickedBeforeScroll) return;
 			this.undisplayHeader({ headerEl: this.#rootContainer });
 			this.#props.previousVisualState = 'hidden';
 		} else if (currentScrollY > window.scrollY && previousVisualState !== 'displayed') {
@@ -139,11 +169,12 @@ export default class Header {
 		}
 
 		if (window.scrollY === 0) {
-			this.#rootContainer.classList.remove('bg-opacity-70', 'bg-midnight');
+			// If section link is clicked which may trigger possible auto scroll, prevent it to be transparent
+			this.#rootContainer.classList.remove('bg-opacity-20', 'bg-midnight-dark');
 			this.#rootContainer.classList.add('bg-transparent');
 		} else if (scrollY !== 0 && currentScrollY === 0) {
 			this.#rootContainer.classList.remove('bg-transparent');
-			this.#rootContainer.classList.add('bg-opacity-70', 'bg-midnight');
+			this.#rootContainer.classList.add('bg-opacity-20', 'bg-midnight-dark');
 		}
 
 		this.#props.currentScrollY = window.scrollY;

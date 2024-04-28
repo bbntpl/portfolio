@@ -20,10 +20,12 @@ export default class ProgressIndicator {
 	#rootContainer: HTMLDivElement;
 	#progress: HTMLDivElement;
 
-	constructor({ sections }: ProgressIndicatorConstructorArgs) {
+	constructor({
+		sections
+	}: ProgressIndicatorConstructorArgs) {
 		this.#progress = createElement('div', {
 			attributes: {
-				class: ['bg-downy-source', 'rounded-md', 'w-full', 'h-0']
+				class: ['bg-bluemine-200', 'rounded-md', 'w-full', 'h-0']
 			}
 		});
 
@@ -42,7 +44,7 @@ export default class ProgressIndicator {
 					'border-4',
 					'justify-center',
 					'rounded-xl',
-					'border-downy-source',
+					'border-bluemine-200',
 					'w-6',
 					'h-96',
 					'left-8px',
@@ -58,7 +60,7 @@ export default class ProgressIndicator {
 			children: [this.#progress]
 		});
 
-		this.putPentaIcons({
+		this.positionPentaIcons({
 			sections,
 			totalSectionsHeight: this.getTotalSectionsHeight(sections),
 		});
@@ -77,10 +79,11 @@ export default class ProgressIndicator {
 	private getTotalSectionsHeight = (sections: ProgressIndicatorConstructorArgs['sections']) =>
 		sections.reduce((totalHeight, section) => {
 			const sectionHeight = section.clientHeight;
-			return totalHeight + sectionHeight;
+			const extraGapsByStyles = 200;
+			return totalHeight + sectionHeight + extraGapsByStyles;
 		}, 0);
 
-	private getPentaIcon({
+	private getPentaIconElement({
 		progressContainerWidth,
 		section
 	}: PentaIconArgs): HTMLDivElement {
@@ -117,40 +120,42 @@ export default class ProgressIndicator {
 	}
 
 
-	private putPentaIcons({
+	private positionPentaIcons({
 		sections,
 		totalSectionsHeight,
 	}: PentaIconsPlacementArgs): void {
 		let accumulatedSectionsHeight: number = 0;
 		const sectionWithoutIcon: { height: number, index: null | number } = {
-			height: 0, index: null
+			height: 0,
+			index: null
 		};
 
 		for (const [index, section] of sections.entries()) {
 			const progressContainerWidth = this.#rootContainer.clientWidth || 30;
 
-			const pentaIcon = this.getPentaIcon({
+			const pentaIconElement = this.getPentaIconElement({
 				progressContainerWidth,
 				section
 			})
 
-			if (pentaIcon) {
+			if (pentaIconElement) {
 				// Since the width & height of 'progress' closely matches that of 'icon-wrapper',
-				// this computed value is utilized to slightly adjust the horizontal position
-				// of the icon for precise progression checkpoint alignment.
+				// this computed value is utilized to slightly adjust the vertical position
+				// of the icon to increase precision of penta icon alignment.
 				const pentaIconPosAdjustment = Math.round(progressContainerWidth / 2);
 				const pentaIconTopPos = sectionWithoutIcon.index !== null &&
 					index === sectionWithoutIcon.index + 1 ?
+					// The first section with icon will have slight adjustment
 					Math.round((
-						((accumulatedSectionsHeight / 2) + pentaIconPosAdjustment)
+						(accumulatedSectionsHeight + pentaIconPosAdjustment)
 						/ totalSectionsHeight) * 100)
 					: Math.round((
-						(accumulatedSectionsHeight - pentaIconPosAdjustment)
+						(accumulatedSectionsHeight + (pentaIconPosAdjustment + ((index * 0.7) * 200)))
 						/ totalSectionsHeight) * 100)
 
-				pentaIcon.style.top = `${pentaIconTopPos}%`;
+				pentaIconElement.style.top = `${pentaIconTopPos}%`;
 
-				appendChildren(this.#rootContainer, [pentaIcon]);
+				appendChildren(this.#rootContainer, [pentaIconElement]);
 			} else {
 				sectionWithoutIcon.height = section.clientHeight;
 				sectionWithoutIcon.index = index;
