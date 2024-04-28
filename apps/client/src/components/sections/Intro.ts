@@ -42,7 +42,7 @@ export default class IntroSection {
 		});
 
 		this.#identityText = createElementWithText('h2', {
-			text: 'A lifelong learner and full-stack developer',
+			text: 'Full-stack developer',
 			class: [
 				'text-base',
 				'text-center',

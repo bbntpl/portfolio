@@ -70,10 +70,10 @@ export default class Header {
 					children: [this.#logoObject]
 				}),
 				this.createMenuList([
-					{ name: 'about' },
-					{ name: 'skills' },
 					{ name: 'projects' },
+					{ name: 'skills' },
 					{ name: 'education' },
+					{ name: 'about' },
 				])
 			]
 		});

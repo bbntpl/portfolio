@@ -89,7 +89,7 @@ export default class ProjectsSection {
 					'viewport-element-transition',
 				]
 			},
-			textContent: 'Developer\'s picks'
+			textContent: ''
 		})
 
 		this.#secondaryProjectsLinkWrapper = createElement('div', {

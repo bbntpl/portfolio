@@ -26,45 +26,23 @@ export const aboutMeInfo: Profile = {
 	imageUrl: 'https://imgur.com/SoV9PnW.jpg',
 	socialMediaLinks: [
 		{
-			platform: 'Facebook',
-			url: 'https://www.facebook.com/profile.php?id=100070263205172'
+			platform: 'Linkedin',
+			url: 'https://www.linkedin.com/in/b-b-a-a54a8620a/'
 		},
 		{
 			platform: 'Github',
 			url: 'https://github.com/bbntpl'
 		},
 		{
-			platform: 'Instagram',
-			url: 'https://instagram.com/leisebegeistert'
-		},
-		{
-			platform: 'Linkedin',
-			url: 'https://www.linkedin.com/in/b-b-a-a54a8620a/'
-		},
-		{
-			platform: 'Twitter',
-			url: 'https://twitter.com/qesabito'
-		},
-		{
 			platform: 'Email',
 			url: 'mailto:bbantipolo@gmail.com'
-		}
+		},
 	],
 	about: [
-		'The first website I have created ever was for my high school senior project on deforestation. I used only HTML/CSS written in Notepad++ and hosted the website through GoDaddy. A few years later, around 2019, I wrote my first real code (that is not HTML & CSS) in C#. Eventually, I stumbled upon learning to develop websites again in 2022 using The Odin Project courses.',
-		'My life\'s purpose revolves around constant improvement, both in myself and in my surroundings (if possible). I generally enjoy refining my skills and enriching my comprehension of things.',
-		'As for my interests, it\'s difficult to narrow down my interests because I\'m almost interested in everything that can be grasped/comprehend. And about my hobbies, my current ones: programming, learning languages,studying, reading books and writing drafts for blogging purposes.',
+		'I\'m Beaver Bryan Antipolo, but most of my friends and family call me Beaver. I studied computer programming in college and graduated several years ago. I still enjoy working on programming projects in my free time as a hobby.',
+		'Recently, I completed a series of free online courses from The Odin Project, where I gained a thorough understanding of relevant concepts and developed well-rounded skills necessary to build full-stack apps.',
 	],
-	randomFacts: [
-		{
-			label: 'Age',
-			value: 23
-		},
-		{
-			label: 'Favorite Music Genre',
-			value: 'Jazz Fusion/High-Energy Jazz'
-		},
-	]
+	randomFacts: []
 }
 
 export const mySkillset: Skillset = [
@@ -73,25 +51,28 @@ export const mySkillset: Skillset = [
 	{ level: 'experienced', name: 'CSS/Sass', category: 'frontend' },
 	{ level: 'experienced', name: 'JavaScript', category: 'frontend' },
 	{ level: 'experienced', name: 'React', category: 'frontend' },
-	{ level: 'beginner', name: 'TypeScript', category: 'frontend' },
+	{ level: 'intermediate', name: 'TypeScript', category: 'frontend' },
 	{ level: 'beginner', name: 'Vue.js', category: 'frontend' },
-	{ level: 'intermediate', name: 'Redux', category: 'frontend' },
+	{ level: 'beginner', name: 'Design systems', category: 'frontend' },
+
 	// Back-end stuff
 	{ level: 'experienced', name: 'Node.js', category: 'backend' },
 	{ level: 'intermediate', name: 'Express', category: 'backend' },
 	{ level: 'intermediate', name: 'MongoDB', category: 'backend' },
+	{ level: 'beginner', name: 'GraphQL Yoga', category: 'backend' },
+
 	// Dev Tools
 	{ level: 'beginner', name: 'Cypress', category: 'devtools' },
 	{ level: 'intermediate', name: 'Postman', category: 'devtools' },
-	{ level: 'experienced', name: 'Git & Github', category: 'devtools' },
 	{ level: 'intermediate', name: 'Chrome/Firefox Dev Tools', category: 'devtools' },
+	{ level: 'experienced', name: 'Git & Github', category: 'devtools' },
+
 	// Others	
 	{ level: 'intermediate', name: 'Firebase', category: 'others' },
-	{ level: 'beginner', name: 'GraphQL', category: 'others' },
-	{ level: 'intermediate', name: 'Webpack', category: 'others' },
 	{ level: 'intermediate', name: 'Figma', category: 'others' },
+	{ level: 'beginner', name: 'GraphQL', category: 'others' },
+	{ level: 'beginner', name: '0Auth', category: 'others' },
 	{ level: 'beginner', name: 'Julia', category: 'others' },
-	{ level: 'beginner', name: 'Ruby', category: 'others' },
-	{ level: 'intermediate', name: 'VSCodeVim', category: 'others' }
+	{ level: 'beginner', name: 'Accessibility', category: 'others' },
 ]
 

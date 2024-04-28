@@ -3,16 +3,15 @@ import { Portfolio } from './types';
 
 import './style.css';
 import LoadingScreen from './components/LoadingScreen';
-import ParallaxBgImage from './assets/images/parallax-bg.png';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ProgressIndicator from './components/layout/ProgressIndicator';
-import ParallaxScroll from './lib/parallax-scroll';
 import Intro from './components/sections/Intro';
 import About from './components/sections/About';
 import Projects from './components/sections/Projects';
 import Skills from './components/sections/Skills';
 import EducationalBackgrounds from './components/sections/Education';
+import MainContainer from './components/MainContainer';
 import { elementsInViewportTransitions } from './lib/viewport-elements-transitions';
 
 import createElement from './helpers/create-element';
@@ -38,12 +37,12 @@ class App {
 
 		// Create portfolio sections as children of section container
 		this.#introSection = new Intro();
-		this.#aboutSection = new About(this.#data.profile);
-		this.#skillsSection = new Skills({ skills: this.#data.skillset });
 		this.#projectsSection = new Projects({ projects: this.#data.projects });
+		this.#skillsSection = new Skills({ skills: this.#data.skillset });
 		this.#educationSection = new EducationalBackgrounds({
 			educationalBackgrounds: this.#data.educationalBackgrounds
 		});
+		this.#aboutSection = new About(this.#data.profile);
 
 		// Create instances of main layout components
 		this.#sectionContainer = createElement('main', {
@@ -67,10 +66,10 @@ class App {
 			},
 			children: [
 				this.#introSection.getRootElement(),
-				this.#aboutSection.getRootElement(),
-				this.#skillsSection.getRootElement(),
 				this.#projectsSection.getRootElement(),
-				this.#educationSection.getRootElement()
+				this.#skillsSection.getRootElement(),
+				this.#educationSection.getRootElement(),
+				this.#aboutSection.getRootElement(),
 			]
 		});
 		this.#header = new Header();
@@ -96,14 +95,13 @@ class App {
 			]
 		});
 
-		const parallaxElement = new ParallaxScroll({
+		const mainContainer = new MainContainer({
 			containerBgColor: 'bg-midnight',
 			contentElement: this.#layoutContainer,
-			backgroundUrl: ParallaxBgImage
 		});
 
 		this.#rootContainer = createElement('div', {
-			children: [parallaxElement.getRootElement()]
+			children: [mainContainer.getRootElement()]
 		});
 
 		this.#sectionContainer.classList.add(
