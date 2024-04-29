@@ -27,7 +27,7 @@ export const aboutMeInfo: Profile = {
 	socialMediaLinks: [
 		{
 			platform: 'Linkedin',
-			url: 'https://www.linkedin.com/in/b-b-a-a54a8620a/'
+			url: 'https://www.linkedin.com/in/beaver-bryan-a-a54a8620a/'
 		},
 		{
 			platform: 'Github',
@@ -40,7 +40,7 @@ export const aboutMeInfo: Profile = {
 	],
 	about: [
 		'I\'m Beaver Bryan Antipolo, but most of my friends and family call me Beaver. I studied computer programming in college and graduated several years ago. I still enjoy working on programming projects in my free time as a hobby.',
-		'Recently, I completed a series of free online courses from The Odin Project, where I gained a thorough understanding of relevant concepts and developed well-rounded skills necessary to build full-stack apps.',
+		'Recently, I completed a series of free online courses from The Odin Project, where I gained a thorough understanding of fundamental web dev concepts and developed well-rounded skills necessary to build modern full-stack apps.',
 	],
 	randomFacts: []
 }
