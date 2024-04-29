@@ -206,7 +206,7 @@ export default class ProjectsSection {
 					'flex-row',
 					'flex-wrap',
 					'gap-y-2',
-					'gap-x-4',
+					'gap-x-2',
 					'justify-start'
 				]
 			}

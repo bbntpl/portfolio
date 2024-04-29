@@ -23,7 +23,7 @@ export const educationalBackgrounds: Array<UniversityDegree | SelfDirectedCourse
 ]
 
 export const aboutMeInfo: Profile = {
-	imageUrl: 'https://imgur.com/SoV9PnW.jpg',
+	imageUrl: 'https://imgur.com/tymN6yG.jpg',
 	socialMediaLinks: [
 		{
 			platform: 'Linkedin',

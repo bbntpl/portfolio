@@ -42,7 +42,7 @@ const config: WebpackConfig = function (env) {
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				title: 'Portfolio V1 of BBA',
+				title: 'Portfolio V1',
 				template: './src/index.html',
 				favicon: './src/assets/icons/logo/bb-logo.svg'
 			}),
